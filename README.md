@@ -88,7 +88,7 @@ then you get this output:
   +-------+-------+-------+
   | 00000 | 00000 | 00001 | <- Pad 1 bitfield
   +-------+-------+-------+
-handleButtonPress_v2(): Pad 1, UP button pressed
+handleButtonPress(): Pad 1, UP button pressed
 blink_a_led(): Pad 1, LED index: 1
 blinking one LED for button ID: 1
 ```
