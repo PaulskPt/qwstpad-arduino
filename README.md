@@ -22,17 +22,18 @@ This library enables seamless communication with multiple QwstPad boards over I�
 
 ## 📁 Repository Structure
 
+```
 src
   ├── qwstpad.h # QwstPad class header 
   ├── qwstpad.cpp # QwstPad class implementation 
   ├── Feather_QwstPad_test.ino # Arduino sketch for testing 
-docs
+doc
   ├── serial_output.txt
 images
   ├── hardware_used.png
 ├── README.md # This file
     LICENSE
-
+```
 ## 🔧 Installation
 
 1. Clone this repository:
@@ -46,7 +47,7 @@ images
 4. Upload the sketch to your Feather ESP32-S3 TFT.
 
 ## 🧪 Example output
-
+```
 ✅ Found MAX17048 with Chip ID: 0xC
 Scanning I2C bus...
 I2C device found at 0x21
@@ -55,7 +56,7 @@ Pad 1, I2C address: 0x21, is connected
 Pad 2, I2C address: 0x23, is connected
 handleButtonPress_v2(): Pad 1, UP button pressed
 blink_a_led(): Pad 1, blinking all LEDs
-
+```
 ## 📚 Documentation 
 
 QwstPad::init() — Initializes pad with I²C address
