@@ -15,7 +15,7 @@ This library enables seamless communication with multiple QwstPad boards over I�
 ## 🧰 Hardware Requirements
 
 - Adafruit Feather ESP32-S3 TFT
-- QwstPad boards (with TCA9555 I/O expanders)
+- Pimoroni QwstPad (I2C Game controller) boards (with TCA9555 I/O expanders)
 - I²C wiring between Feather and QwstPads
 (more info below)
 
