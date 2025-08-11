@@ -376,7 +376,7 @@ int8_t QwstPad::getFirstPressedButtonBitIndex() {
         if (__padID >= 0 && __padID < MAX_PADS)
             pressed = entry.second;
         else {
-            Serial.println(F("ERROR: Invalid padID"));
+            Serial.print(F("ERROR: Invalid padID"));
             Serial.println(__padID);
             continue;
         }
@@ -404,10 +404,11 @@ String QwstPad::getFirstPressedButtonName() {
     bool pressed = false;
 
     for (const auto& entry : __btn_states) {
-        if (__padID == 0 || __padID == 1)
+        if (__padID >= 0 && __padID < MAX_PADS)
             pressed = entry.second;
         else {
-            Serial.println(F("ERROR: Invalid padID"));
+            Serial.print(F("ERROR: Invalid padID"));
+            Serial.println(__padID);
             continue;
         }
         if (pressed) {
