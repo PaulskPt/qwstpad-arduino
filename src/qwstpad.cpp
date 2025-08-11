@@ -15,8 +15,6 @@
 #include "qwstpad.h"
 #include <Arduino.h>
 #include <HardwareSerial.h>  // Add this for Serial support
-//#include <vector>
-//#include <algorithm>
 #include <cstdint>
 #include <vector>
 #include <stdexcept>  // for std::invalid_argument
