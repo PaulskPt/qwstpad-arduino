@@ -39,7 +39,6 @@ handleButtonPress_v2(): Pad 1, UP button pressed
 blink_a_led(): Pad 1, LED index: 1
 blinking one LED for button ID: 1
 
-
   +-------+-------+-------+
   | PadL  | LEDs  | PadR  |
   +-------+-------+-------+
@@ -61,7 +60,6 @@ blinking one LED for button ID: 2
 handleButtonPress_v2(): Pad 1, RIGHT button pressed
 blink_a_led(): Pad 1, LED index: 3
 blinking one LED for button ID: 3
-
 
   +-------+-------+-------+
   | PadL  | LEDs  | PadR  |
@@ -95,7 +93,6 @@ blinking one LED for button ID: 5
 handleButtonPress_v2(): Pad 1, PLUS button pressed
 blink_a_led(): Pad 1, LED index: 4
 blinking one LED for button ID: 11
-
 
   +-------+-------+-------+
   | PadL  | LEDs  | PadR  |
@@ -185,7 +182,6 @@ handleButtonPress_v2(): Pad 2, DOWN button pressed
 blink_a_led(): Pad 2, LED index: 4
 blinking one LED for button ID: 4
 
-
   +-------+-------+-------+
   | PadL  | LEDs  | PadR  |
   +-------+-------+-------+
@@ -230,7 +226,6 @@ handleButtonPress_v2(): Pad 2, Y button pressed
 blink_a_led(): Pad 2, LED index: 2
 blinking one LED for button ID: 13
 
-
   +-------+-------+-------+
   | PadL  | LEDs  | PadR  |
   +-------+-------+-------+
@@ -242,7 +237,6 @@ handleButtonPress_v2(): Pad 2, A button pressed
 blink_a_led(): Pad 2, LED index: 3
 blinking one LED for button ID: 14
 
-
   +-------+-------+-------+
   | PadL  | LEDs  | PadR  |
   +-------+-------+-------+
@@ -253,4 +247,3 @@ blinking one LED for button ID: 14
 handleButtonPress_v2(): Pad 2, X button pressed
 blink_a_led(): Pad 2, LED index: 1
 blinking one LED for button ID: 15
-
