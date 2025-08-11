@@ -8,7 +8,7 @@ This library enables seamless communication with multiple QwstPad boards over IÂ
 - Supports multiple QwstPad boards via IÂ²C
 - Active-low and active-high logic handling
 - Button state tracking with bitfields
-- LED control with active-low logic
+- LED control
 - Clean serial output for debugging
 - Modular and extensible C++ class design
 
@@ -17,7 +17,6 @@ This library enables seamless communication with multiple QwstPad boards over IÂ
 - Adafruit Feather ESP32-S3 TFT
 - QwstPad boards (with TCA9555 I/O expanders)
 - IÂ²C wiring between Feather and QwstPads
-- Optional: MAX17048 battery monitor
 (more info below)
 
 ## ğŸ“ Repository Structure
