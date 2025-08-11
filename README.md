@@ -119,3 +119,7 @@ Special thanks to the original QwstPad project and the Pimoroni and Adafruit com
 - Pimoroni Qw/ST Pad (I2C Game Controller) [info](https://shop.pimoroni.com/products/qwst-pad?variant=53514400596347)
 - 2 x 4 Pin JST-SH Cable (Qwiic, STEMMA QT, Qw/ST 200mm) [info](https://shop.pimoroni.com/products/jst-sh-cable-qwiic-stemma-qt-compatible?variant=31910609813587)
 
+Note: if you are going to use two (like in this repo) 3 or (maximum) 4 Pimoroni QstPad boards, you need to cut copper bridges on the back of the board as indicated on that side of the board, to give each board its unique I2C address. Then, in the sketch, line 50, change the number of QwstPad's used accordingly:
+```
+  50 #define MAX_PADS 2
+```
