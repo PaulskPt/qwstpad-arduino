@@ -37,7 +37,7 @@ images
 ```
 Link to image of used [hardware](https://github.com/PaulskPt/qwstpad-arduino/blob/main/images/hardware_used.jpg)
 
-Link to Serial Monitor [output](https://github.com/PaulskPt/qwstpad-arduino/blob/main/doc/monitor_output.txt)
+Link to Serial Monitor [output](https://github.com/PaulskPt/qwstpad-arduino/tree/main/doc)
 
 ## 🔧 Installation
 
