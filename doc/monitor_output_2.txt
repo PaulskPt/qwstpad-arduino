@@ -1,0 +1,110 @@
+Sunday 2025-08-10 20h30 utc+1
+Board: Adafruit Feather_ESP32-S3 TFT
+       with connected via I2C: 2 x Pimoroni QwstPad.
+
+IDE: Arduino v.2.3.5
+Sketch: Feather_ESP32-S3_TFT_Qwstpad_test.ino
+with own built QwstPad class (C++).
+
+Note: calling function QstPad::getButtonBitfield() with parameter fancy = true
+See sketch, line 412: padLogic[i].buttons = pads[i]->getButtonBitfield(true);
+
+Serial Monitor output
+
+Pad 1, key: U -> Bit index: 1, is pressed
+  +-------+-------+-------+
+  | PadL  | LEDs  | PadR  |
+  +-------+-------+-------+
+  |b15~b11|b10~b6 | b5~b0 |
+  +-------+-------+-------+
+  | 00000 | 00000 | 00001 | <- Pad 1 bitfield
+  +-------+-------+-------+
+
+
+Pad 1, key: L -> Bit index: 2, is pressed
+  +-------+-------+-------+
+  | PadL  | LEDs  | PadR  |
+  +-------+-------+-------+
+  |b15~b11|b10~b6 | b5~b0 |
+  +-------+-------+-------+
+  | 00000 | 00000 | 00010 | <- Pad 1 bitfield
+  +-------+-------+-------+
+
+
+Pad 1, key: R -> Bit index: 3, is pressed
+  +-------+-------+-------+
+  | PadL  | LEDs  | PadR  |
+  +-------+-------+-------+
+  |b15~b11|b10~b6 | b5~b0 |
+  +-------+-------+-------+
+  | 00000 | 00000 | 00100 | <- Pad 1 bitfield
+  +-------+-------+-------+
+  
+  Pad 1, key: D -> Bit index: 4, is pressed
+  +-------+-------+-------+
+  | PadL  | LEDs  | PadR  |
+  +-------+-------+-------+
+  |b15~b11|b10~b6 | b5~b0 |
+  +-------+-------+-------+
+  | 00000 | 00000 | 01000 | <- Pad 1 bitfield
+  +-------+-------+-------+
+
+
+Pad 1, key: Minus -> Bit index: 5, is pressed
+  +-------+-------+-------+
+  | PadL  | LEDs  | PadR  |
+  +-------+-------+-------+
+  |b15~b11|b10~b6 | b5~b0 |
+  +-------+-------+-------+
+  | 00000 | 00000 | 10000 | <- Pad 1 bitfield
+  +-------+-------+-------+
+
+
+Pad 1, key: Plus -> Bit index: 11, is pressed
+  +-------+-------+-------+
+  | PadL  | LEDs  | PadR  |
+  +-------+-------+-------+
+  |b15~b11|b10~b6 | b5~b0 |
+  +-------+-------+-------+
+  | 00001 | 00000 | 00000 | <- Pad 1 bitfield
+  +-------+-------+-------+
+  
+  
+Pad 1, key: B -> Bit index: 12, is pressed
+  +-------+-------+-------+
+  | PadL  | LEDs  | PadR  |
+  +-------+-------+-------+
+  |b15~b11|b10~b6 | b5~b0 |
+  +-------+-------+-------+
+  | 00010 | 00000 | 00000 | <- Pad 1 bitfield
+  +-------+-------+-------+
+
+
+  Pad 1, key: Y -> Bit index: 13, is pressed
+  +-------+-------+-------+
+  | PadL  | LEDs  | PadR  |
+  +-------+-------+-------+
+  |b15~b11|b10~b6 | b5~b0 |
+  +-------+-------+-------+
+  | 00100 | 00000 | 00000 | <- Pad 1 bitfield
+  +-------+-------+-------+
+
+  
+  Pad 1, key: A -> Bit index: 14, is pressed
+  +-------+-------+-------+
+  | PadL  | LEDs  | PadR  |
+  +-------+-------+-------+
+  |b15~b11|b10~b6 | b5~b0 |
+  +-------+-------+-------+
+  | 01000 | 00000 | 00000 | <- Pad 1 bitfield
+  +-------+-------+-------+
+  
+  
+  Pad 1, key: X -> Bit index: 15, is pressed
+  +-------+-------+-------+
+  | PadL  | LEDs  | PadR  |
+  +-------+-------+-------+
+  |b15~b11|b10~b6 | b5~b0 |
+  +-------+-------+-------+
+  | 10000 | 00000 | 00000 | <- Pad 1 bitfield
+  +-------+-------+-------+
