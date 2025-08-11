@@ -31,7 +31,7 @@ src
 doc
   ├── serial_output.txt
 images
-  ├── hardware_used.png
+  ├── [hardware_used.png](https://github.com/PaulskPt/qwstpad-arduino/blob/main/images/hardware_used.jpg)
 ├── README.md # This file
     LICENSE
 ```
