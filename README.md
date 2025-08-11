@@ -31,10 +31,12 @@ src
 doc
   ├── serial_output.txt
 images
-  ├── [hardware_used.png](https://github.com/PaulskPt/qwstpad-arduino/blob/main/images/hardware_used.jpg)
+  ├── hardware_used.png
 ├── README.md # This file
     LICENSE
 ```
+Link to image of used [hardware](https://github.com/PaulskPt/qwstpad-arduino/blob/main/images/hardware_used.jpg)
+
 ## 🔧 Installation
 
 1. Clone this repository:
