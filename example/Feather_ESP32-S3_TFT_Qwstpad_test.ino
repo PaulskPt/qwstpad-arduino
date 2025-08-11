@@ -178,7 +178,7 @@ void blink_a_led(padBtn &padLogic, bool all_leds = false) {
 }
 
 void handleButtonPress(padBtn &padLogic, uint8_t pad_idx) {
-  static constexpr const char txt0[] PROGMEM = "handleButtonPress_v2(): ";
+  static constexpr const char txt0[] PROGMEM = "handleButtonPress(): ";
   static constexpr const char txt1[] PROGMEM = " button pressed";
   String key = pads[pad_idx]->getFirstPressedButtonName();
   bool found = false;
@@ -409,7 +409,7 @@ while (true) {
         if (use_qwstpad) {
           // Note: getButtonBitfield() calls read_buttons, which calls update().
           // Poll pads[i]. Param: false = not use the fancy printing
-          padLogic[i].buttons = pads[i]->getButtonBitfield(false);
+          padLogic[i].buttons = pads[i]->getButtonBitfield(true);
           //padLogic[i].key = pads[i]->getFirstPressedButtonName();
           handleButtonPress(padLogic[i], i); // Handle button press
           
