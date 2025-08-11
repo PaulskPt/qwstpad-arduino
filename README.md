@@ -59,7 +59,7 @@ I2C device found at 0x21
 I2C device found at 0x23
 Pad 1, I2C address: 0x21, is connected
 Pad 2, I2C address: 0x23, is connected
-handleButtonPress_v2(): Pad 1, UP button pressed
+handleButtonPress(): Pad 1, UP button pressed
 blink_a_led(): Pad 1, blinking all LEDs
 ```
 ## 📚 Documentation 
