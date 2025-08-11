@@ -71,6 +71,8 @@ QwstPad::setLogicType() — Sets logic inversion mode
 
 getButtonBitfield() — Returns current button state as bitfield
 
+There are more functions in the QwstPad C++ library that we not yet use in the test sketch
+
 Note: If you want a fancy output of button press info:
 Set the parameter to ```true``` in line 
 ```
