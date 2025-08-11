@@ -87,7 +87,14 @@ Pad 1, key: U -> Bit index: 1, is pressed
 
 ## 🛠️ Development notes
 
-This port was carefully debugged to resolve logic inversion issues and ensure consistent behavior across multiple pads. The code is modular and ready for extension — whether you want to add debounce logic, event callbacks, or integrate with other peripherals.
+This port was carefully debugged to resolve logic inversion issues and ensure consistent behavior across multiple pads. The code is modular and ready for extension — whether you want to add debounce logic, event callbacks, or integrate with other peripherals. In this moment a sort of debounce method is used by a polling timing in the loop() function of the sketch, set in:
+```
+391 const unsigned long pollInterval = 300;  // 300 milliseconds
+```
+and in:
+```
+397  if (start || currentTime - lastPollTime >= pollInterval) {
+```
 
 ## 📜 License
 
