@@ -29,6 +29,7 @@ src
   ├── qwstpad.cpp # QwstPad class implementation 
 doc
   ├── serial_output.txt
+  ├── serial_output_2.txt
 images
   ├── hardware_used.png
 ├── README.md # This file
