@@ -123,3 +123,8 @@ Note: if you are going to use two (like in this repo) 3 or (maximum) 4 Pimoroni 
 ```
   50 #define MAX_PADS 2
 ```
+Then in the sketch, function setup(), uncomment the following line(s):
+```
+  294  //pads[2] = new QwstPad(DEFAULT_I2C_PORT, ALT_ADDRESS_2);
+  295  //pads[3] = new QwstPad(DEFAULT_I2C_PORT, ALT_ADDRESS_3);
+```
