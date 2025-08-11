@@ -1,4 +1,4 @@
-Sunday 2025-08-10 20h30 utc+1
+Sunday 2025-08-11 212h50 utc+1
 Board: Adafruit Feather_ESP32-S3 TFT
        with connected via I2C: 2 x Pimoroni QwstPad.
 
@@ -9,9 +9,25 @@ with own built QwstPad class (C++).
 Note: calling function QstPad::getButtonBitfield() with parameter fancy = true
 See sketch, line 412: padLogic[i].buttons = pads[i]->getButtonBitfield(true);
 
-Serial Monitor output
+Serial Monitor output:
 
-Pad 1, key: U -> Bit index: 1, is pressed
+✅ Found MAX17048 with Chip ID: 0xC
+Calling scanI2CDevices...
+Scanning I2C bus...
+I2C device found at 0x21
+I2C device found at 0x23
+I2C device found at 0x36
+Scan complete. Devices found: 3
+Returned from scanI2CDevices.
+QwstPad::init(): Pad 1
+QwstPad::init(): Pad 2
+Maximum number of QwSTPads: 2
+Pad 1, I2C address: 0x21, is connected
+Pad 2, I2C address: 0x23, is connected
+Number of connected pads: 2
+Pad 1 is initialized
+Pad 2 is initialized
+
   +-------+-------+-------+
   | PadL  | LEDs  | PadR  |
   +-------+-------+-------+
@@ -19,9 +35,11 @@ Pad 1, key: U -> Bit index: 1, is pressed
   +-------+-------+-------+
   | 00000 | 00000 | 00001 | <- Pad 1 bitfield
   +-------+-------+-------+
+handleButtonPress_v2(): Pad 1, UP button pressed
+blink_a_led(): Pad 1, LED index: 1
+blinking one LED for button ID: 1
 
 
-Pad 1, key: L -> Bit index: 2, is pressed
   +-------+-------+-------+
   | PadL  | LEDs  | PadR  |
   +-------+-------+-------+
@@ -29,9 +47,10 @@ Pad 1, key: L -> Bit index: 2, is pressed
   +-------+-------+-------+
   | 00000 | 00000 | 00010 | <- Pad 1 bitfield
   +-------+-------+-------+
+handleButtonPress_v2(): Pad 1, LEFT button pressed
+blink_a_led(): Pad 1, LED index: 2
+blinking one LED for button ID: 2
 
-
-Pad 1, key: R -> Bit index: 3, is pressed
   +-------+-------+-------+
   | PadL  | LEDs  | PadR  |
   +-------+-------+-------+
@@ -39,8 +58,11 @@ Pad 1, key: R -> Bit index: 3, is pressed
   +-------+-------+-------+
   | 00000 | 00000 | 00100 | <- Pad 1 bitfield
   +-------+-------+-------+
-  
-  Pad 1, key: D -> Bit index: 4, is pressed
+handleButtonPress_v2(): Pad 1, RIGHT button pressed
+blink_a_led(): Pad 1, LED index: 3
+blinking one LED for button ID: 3
+
+
   +-------+-------+-------+
   | PadL  | LEDs  | PadR  |
   +-------+-------+-------+
@@ -48,9 +70,10 @@ Pad 1, key: R -> Bit index: 3, is pressed
   +-------+-------+-------+
   | 00000 | 00000 | 01000 | <- Pad 1 bitfield
   +-------+-------+-------+
+handleButtonPress_v2(): Pad 1, DOWN button pressed
+blink_a_led(): Pad 1, LED index: 4
+blinking one LED for button ID: 4
 
-
-Pad 1, key: Minus -> Bit index: 5, is pressed
   +-------+-------+-------+
   | PadL  | LEDs  | PadR  |
   +-------+-------+-------+
@@ -58,9 +81,10 @@ Pad 1, key: Minus -> Bit index: 5, is pressed
   +-------+-------+-------+
   | 00000 | 00000 | 10000 | <- Pad 1 bitfield
   +-------+-------+-------+
+handleButtonPress_v2(): Pad 1, MINUS button pressed
+blink_a_led(): Pad 1, LED index: 1
+blinking one LED for button ID: 5
 
-
-Pad 1, key: Plus -> Bit index: 11, is pressed
   +-------+-------+-------+
   | PadL  | LEDs  | PadR  |
   +-------+-------+-------+
@@ -68,9 +92,11 @@ Pad 1, key: Plus -> Bit index: 11, is pressed
   +-------+-------+-------+
   | 00001 | 00000 | 00000 | <- Pad 1 bitfield
   +-------+-------+-------+
-  
-  
-Pad 1, key: B -> Bit index: 12, is pressed
+handleButtonPress_v2(): Pad 1, PLUS button pressed
+blink_a_led(): Pad 1, LED index: 4
+blinking one LED for button ID: 11
+
+
   +-------+-------+-------+
   | PadL  | LEDs  | PadR  |
   +-------+-------+-------+
@@ -78,9 +104,10 @@ Pad 1, key: B -> Bit index: 12, is pressed
   +-------+-------+-------+
   | 00010 | 00000 | 00000 | <- Pad 1 bitfield
   +-------+-------+-------+
+handleButtonPress_v2(): Pad 1, B button pressed
+blink_a_led(): Pad 1, LED index: 4
+blinking one LED for button ID: 12
 
-
-  Pad 1, key: Y -> Bit index: 13, is pressed
   +-------+-------+-------+
   | PadL  | LEDs  | PadR  |
   +-------+-------+-------+
@@ -88,9 +115,10 @@ Pad 1, key: B -> Bit index: 12, is pressed
   +-------+-------+-------+
   | 00100 | 00000 | 00000 | <- Pad 1 bitfield
   +-------+-------+-------+
+handleButtonPress_v2(): Pad 1, Y button pressed
+blink_a_led(): Pad 1, LED index: 2
+blinking one LED for button ID: 13
 
-  
-  Pad 1, key: A -> Bit index: 14, is pressed
   +-------+-------+-------+
   | PadL  | LEDs  | PadR  |
   +-------+-------+-------+
@@ -98,9 +126,10 @@ Pad 1, key: B -> Bit index: 12, is pressed
   +-------+-------+-------+
   | 01000 | 00000 | 00000 | <- Pad 1 bitfield
   +-------+-------+-------+
-  
-  
-  Pad 1, key: X -> Bit index: 15, is pressed
+handleButtonPress_v2(): Pad 1, A button pressed
+blink_a_led(): Pad 1, LED index: 3
+blinking one LED for button ID: 14
+
   +-------+-------+-------+
   | PadL  | LEDs  | PadR  |
   +-------+-------+-------+
@@ -108,3 +137,120 @@ Pad 1, key: B -> Bit index: 12, is pressed
   +-------+-------+-------+
   | 10000 | 00000 | 00000 | <- Pad 1 bitfield
   +-------+-------+-------+
+handleButtonPress_v2(): Pad 1, X button pressed
+blink_a_led(): Pad 1, LED index: 1
+blinking one LED for button ID: 15
+  
+  +-------+-------+-------+
+  | PadL  | LEDs  | PadR  |
+  +-------+-------+-------+
+  |b15~b11|b10~b6 | b5~b0 |
+  +-------+-------+-------+
+  | 00000 | 00000 | 00001 | <- Pad 2 bitfield
+  +-------+-------+-------+
+handleButtonPress_v2(): Pad 2, UP button pressed
+blink_a_led(): Pad 2, LED index: 1
+blinking one LED for button ID: 1
+
+  +-------+-------+-------+
+  | PadL  | LEDs  | PadR  |
+  +-------+-------+-------+
+  |b15~b11|b10~b6 | b5~b0 |
+  +-------+-------+-------+
+  | 00000 | 00000 | 00010 | <- Pad 2 bitfield
+  +-------+-------+-------+  
+handleButtonPress_v2(): Pad 2, LEFT button pressed
+blink_a_led(): Pad 2, LED index: 2
+blinking one LED for button ID: 2
+
+  +-------+-------+-------+
+  | PadL  | LEDs  | PadR  |
+  +-------+-------+-------+
+  |b15~b11|b10~b6 | b5~b0 |
+  +-------+-------+-------+
+  | 00000 | 00000 | 00100 | <- Pad 2 bitfield
+  +-------+-------+-------+
+handleButtonPress_v2(): Pad 2, RIGHT button pressed
+blink_a_led(): Pad 2, LED index: 3
+blinking one LED for button ID: 3
+
+  +-------+-------+-------+
+  | PadL  | LEDs  | PadR  |
+  +-------+-------+-------+
+  |b15~b11|b10~b6 | b5~b0 |
+  +-------+-------+-------+
+  | 00000 | 00000 | 01000 | <- Pad 2 bitfield
+  +-------+-------+-------+
+handleButtonPress_v2(): Pad 2, DOWN button pressed
+blink_a_led(): Pad 2, LED index: 4
+blinking one LED for button ID: 4
+
+
+  +-------+-------+-------+
+  | PadL  | LEDs  | PadR  |
+  +-------+-------+-------+
+  |b15~b11|b10~b6 | b5~b0 |
+  +-------+-------+-------+
+  | 00000 | 00000 | 10000 | <- Pad 2 bitfield
+  +-------+-------+-------+
+handleButtonPress_v2(): Pad 2, MINUS button pressed
+blink_a_led(): Pad 2, LED index: 1
+blinking one LED for button ID: 5
+
+  +-------+-------+-------+
+  | PadL  | LEDs  | PadR  |
+  +-------+-------+-------+
+  |b15~b11|b10~b6 | b5~b0 |
+  +-------+-------+-------+
+  | 00001 | 00000 | 00000 | <- Pad 2 bitfield
+  +-------+-------+-------+
+handleButtonPress_v2(): Pad 2, PLUS button pressed
+blink_a_led(): Pad 2, LED index: 4
+blinking one LED for button ID: 11
+
+  +-------+-------+-------+
+  | PadL  | LEDs  | PadR  |
+  +-------+-------+-------+
+  |b15~b11|b10~b6 | b5~b0 |
+  +-------+-------+-------+
+  | 00010 | 00000 | 00000 | <- Pad 2 bitfield
+  +-------+-------+-------+
+handleButtonPress_v2(): Pad 2, B button pressed
+blink_a_led(): Pad 2, LED index: 4
+blinking one LED for button ID: 12
+
+  +-------+-------+-------+
+  | PadL  | LEDs  | PadR  |
+  +-------+-------+-------+
+  |b15~b11|b10~b6 | b5~b0 |
+  +-------+-------+-------+
+  | 00100 | 00000 | 00000 | <- Pad 2 bitfield
+  +-------+-------+-------+
+handleButtonPress_v2(): Pad 2, Y button pressed
+blink_a_led(): Pad 2, LED index: 2
+blinking one LED for button ID: 13
+
+
+  +-------+-------+-------+
+  | PadL  | LEDs  | PadR  |
+  +-------+-------+-------+
+  |b15~b11|b10~b6 | b5~b0 |
+  +-------+-------+-------+
+  | 01000 | 00000 | 00000 | <- Pad 2 bitfield
+  +-------+-------+-------+
+handleButtonPress_v2(): Pad 2, A button pressed
+blink_a_led(): Pad 2, LED index: 3
+blinking one LED for button ID: 14
+
+
+  +-------+-------+-------+
+  | PadL  | LEDs  | PadR  |
+  +-------+-------+-------+
+  |b15~b11|b10~b6 | b5~b0 |
+  +-------+-------+-------+
+  | 10000 | 00000 | 00000 | <- Pad 2 bitfield
+  +-------+-------+-------+  
+handleButtonPress_v2(): Pad 2, X button pressed
+blink_a_led(): Pad 2, LED index: 1
+blinking one LED for button ID: 15
+
