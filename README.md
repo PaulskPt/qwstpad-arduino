@@ -113,6 +113,7 @@ Special thanks to the original QwstPad project and the Pimoroni and Adafruit com
 ## Hardware used
 
 - Adafruit Feather ESP32-S3 TFT [info](https://www.adafruit.com/product/5483?srsltid=AfmBOoqu3pTaP28ehaMM7YCZ2IrkUCpeSIhgyfL7kuX6tprso31CxoPy)
+  also available via [Pimoroni](https://shop.pimoroni.com/products/adafruit-esp32-s3-tft-feather-4mb-flash-2mb-psram-stemma-qt?variant=40032190857299)
 - Pimoroni Qw/ST Pad (I2C Game Controller) [info](https://shop.pimoroni.com/products/qwst-pad?variant=53514400596347)
 - 4 Pin JST-SH Cable (Qwiic, STEMMA QT, Qw/ST 200mm [info](https://shop.pimoroni.com/products/jst-sh-cable-qwiic-stemma-qt-compatible?variant=31910609813587)
 
