@@ -57,14 +57,6 @@ const std::unordered_map<std::string, uint8_t> BUTTON_MAPPING = {
 
 const std::vector<uint8_t> LED_MAPPING = {0x6, 0x7, 0x9, 0xA};
 
-/*
-struct ButtonDescriptor {
-    std::string label;
-    uint8_t logicalValue;
-    uint8_t bitIndex;
-};
-*/
-
 // Constructor: initializes mappings and internal states
 QwstPad::QwstPad(uint8_t address) {
     init(this->__i2c, address);
@@ -79,7 +71,6 @@ QwstPad::QwstPad(TwoWire* i2c_port, uint8_t address) {
 #endif
     
 }
-
 
 void QwstPad::init(TwoWire* i2c_port, uint8_t address) {
     this->__i2c = i2c_port;
@@ -132,7 +123,7 @@ void QwstPad::init(TwoWire* i2c_port, uint8_t address) {
         }
     }
     if (!__config) {
-        Serial.print("Pad ID not found: ");
+        Serial.print(F("Pad ID not found: "));
         Serial.println(this->__padID);
         //while (true);  // Halt the CPU
         __config = nullptr;
@@ -186,9 +177,10 @@ void QwstPad::setupTCA9555() {
 }
 
 ButtonDescriptor QwstPad::makeButtonDescriptor(const std::string& label, uint8_t pinIdx) {
+    static constexpr const char txt1[] PROGMEM = "Unknown button label: ";
     auto it = BUTTON_MAPPING.find(label);
     if (it == BUTTON_MAPPING.end()) {
-        throw std::runtime_error("Unknown button label: " + label);
+        throw std::runtime_error(txt1 + label);
     }
     return {label, it->second, pinIdx};
 }
@@ -292,10 +284,7 @@ void QwstPad::pr_PadID() const {
     serialPrintf(PSTR("Pad %d"), __padID+1);
 }
 
-/*
-    (From MS Copilot): Now you can call:
-    getButtonBitfield() → normal bitfield
-*/
+// getButtonBitfield() → normal bitfield
 uint32_t QwstPad::getButtonBitfield(bool fancy = false) {
     static constexpr const char txt0[] PROGMEM = "QwstPad::getButtonBitfield(): ";
     // Apply inversion internally based on config
@@ -354,12 +343,14 @@ uint32_t QwstPad::getButtonBitfield(bool fancy = false) {
 #ifndef MY_DEBUG
     if (result > 0) {
         static constexpr const char bf[] PROGMEM = "bitfield";
+        static constexpr const char hdg[] PROGMEM =      "  | PadL  | LEDs  | PadR  |";
+        static constexpr const char bits_hdg[] PROGMEM = "  |b15~b11|b10~b6 | b5~b0 |";
         if (fancy) {
             //Serial.println(txt0);
             pr_dashBar();
-            Serial.println(F("  | PadL  | LEDs  | PadR  |"));
+            Serial.println(hdg);
             pr_dashBar();
-            Serial.println(F("  |b15~b11|b10~b6 | b5~b0 |"));
+            Serial.println(bits_hdg);
             pr_dashBar();
             printBinary(result, fancy);
             Serial.print(F("<- "));
@@ -386,9 +377,9 @@ int8_t QwstPad::getFirstPressedButtonBitIndex() {
             pressed = entry.second;
         else {
             Serial.println(F("ERROR: Invalid padID"));
+            Serial.println(__padID);
             continue;
         }
-
         if (pressed) {
             auto it = BUTTON_MAPPING.find(entry.first);
             if (it != BUTTON_MAPPING.end()) {
@@ -405,7 +396,6 @@ int8_t QwstPad::getFirstPressedButtonBitIndex() {
             }
         }
     }
-
     return -1; // No button pressed
 }
 
@@ -612,7 +602,7 @@ void QwstPad::set_led(uint8_t index, bool state) {
     Serial.println(state ? "ON" : "OFF");
 #endif
     if (index < 1 || index > NUM_LEDS) {
-        Serial.println(F("LED index out of range (1–4)"));
+        Serial.println(F("LED index out of range (1-4)"));
         return;
     }
     // Update internal LED state bitfield (4 bits)
