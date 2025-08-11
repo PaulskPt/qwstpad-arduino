@@ -32,6 +32,7 @@ doc
   ├── serial_output_2.txt
 images
   ├── hardware_used.png
+  ├── qwstpads_back.png
 ├── README.md # This file
     LICENSE
 ```
