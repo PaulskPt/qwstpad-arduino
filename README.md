@@ -112,8 +112,6 @@ MIT License — feel free to use, modify, and share.
 
 Special thanks to the original QwstPad project and the Pimoroni and Adafruit communities for their excellent hardware and documentation.
 
-## Images 
-
 ## Hardware used
 
 - Adafruit Feather ESP32-S3 TFT [info](https://www.adafruit.com/product/5483?srsltid=AfmBOoqu3pTaP28ehaMM7YCZ2IrkUCpeSIhgyfL7kuX6tprso31CxoPy)
