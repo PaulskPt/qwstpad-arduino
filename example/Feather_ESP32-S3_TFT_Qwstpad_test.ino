@@ -47,14 +47,14 @@ struct padBtn {
 
 std::map<std::string, bool> buttons;
 
-#define MAX_PADS 2
+#define CURRENT_MAX_PADS 2
 
-padBtn padLogic[MAX_PADS]; // Logic array aligned with pads
+padBtn padLogic[CURRENT_MAX_PADS]; // Logic array aligned with pads
 
 //uint8_t NUM_BUTTONS = 10; // defined in qwstpad.h
 uint8_t NUM_PADS = 0;
 
-QwstPad* pads[MAX_PADS];  // Declare globally as pointers
+QwstPad* pads[CURRENT_MAX_PADS];  // Declare globally as pointers
 
 std::vector<std::pair<uint8_t, char>> orderedDict = {
     {15, 'X'},
@@ -231,7 +231,7 @@ void handleButtonPress(padBtn &padLogic, uint8_t pad_idx) {
 }
 
 void clr_buttons(uint8_t i, bool all = false) {
-  if (i < 0 || i >= MAX_PADS) {
+  if (i < 0 || i >= CURRENT_MAX_PADS) {
     Serial.println(F("Invalid pad index in clr_buttons()"));
     return;
   }
@@ -296,8 +296,8 @@ void setup() {
 
   uint16_t pad1address;
   Serial.print(F("Maximum number of QwSTPads: "));
-  Serial.println(MAX_PADS);
-  for (int i = 0; i < MAX_PADS; ++i) {
+  Serial.println(CURRENT_MAX_PADS);
+  for (int i = 0; i < CURRENT_MAX_PADS; ++i) {
     bool isConnected = pads[i]->isConnected();
     uint16_t pAddress = pads[i]->getAddress();
     Serial.print(F("Pad "));
@@ -356,7 +356,7 @@ void loop() {
   bool  use_qwstpad;
   uint16_t padLogicLen = 0;
 
-  for (int i = 0; i < MAX_PADS; i++) {
+  for (int i = 0; i < CURRENT_MAX_PADS; i++) {
     if (!pads[i]->IsInitialized()) {
       pads[i]->begin(); // restart the pad
       // 2nd check

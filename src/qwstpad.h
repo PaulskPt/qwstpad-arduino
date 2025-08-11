@@ -43,6 +43,7 @@ const char __version__[] = "0.0.1";
 #endif
 
 // Constants
+const uint8_t MAX_PADS = 4; // Maximum number of pads supported
 const uint8_t NUM_LEDS = 4;
 const uint8_t NUM_BUTTONS = 10;
 
