@@ -59,7 +59,7 @@ I2C device found at 0x21
 I2C device found at 0x23
 Pad 1, I2C address: 0x21, is connected
 Pad 2, I2C address: 0x23, is connected
-handleButtonPress_v2(): Pad 1, UP button pressed
+handleButtonPress(): Pad 1, UP button pressed
 blink_a_led(): Pad 1, blinking all LEDs
 ```
 ## 📚 Documentation 
@@ -77,11 +77,10 @@ There are more functions in the QwstPad C++ library that we not yet use in the t
 Note: If you want a fancy output of button press info:
 Set the parameter to ```true``` in line 
 ```
-  413 padLogic[i].buttons = pads[i]->getButtonBitfield(true);
+  412 padLogic[i].buttons = pads[i]->getButtonBitfield(true);
 ```
 then you get this output: 
 ```
-Pad 1, key: U -> Bit index: 1, is pressed
   +-------+-------+-------+
   | PadL  | LEDs  | PadR  |
   +-------+-------+-------+
@@ -89,6 +88,9 @@ Pad 1, key: U -> Bit index: 1, is pressed
   +-------+-------+-------+
   | 00000 | 00000 | 00001 | <- Pad 1 bitfield
   +-------+-------+-------+
+handleButtonPress_v2(): Pad 1, UP button pressed
+blink_a_led(): Pad 1, LED index: 1
+blinking one LED for button ID: 1
 ```
 
 ## 🛠️ Development notes
