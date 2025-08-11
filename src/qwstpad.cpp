@@ -37,7 +37,7 @@ std::vector<padConfig> padConfigs = {
         .padID = 1,
         .logic = ACTIVE_HIGH,
         .buttonPins = {}
-    }
+    },
     {
         .padID = 2,
         .logic = ACTIVE_HIGH,
