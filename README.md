@@ -23,10 +23,11 @@ This library enables seamless communication with multiple QwstPad boards over I�
 ## 📁 Repository Structure
 
 ```
+example
+  ├── Feather_QwstPad_test.ino # Arduino sketch for testing 
 src
   ├── qwstpad.h # QwstPad class header 
   ├── qwstpad.cpp # QwstPad class implementation 
-  ├── Feather_QwstPad_test.ino # Arduino sketch for testing 
 doc
   ├── serial_output.txt
 images
