@@ -44,11 +44,11 @@ Link to Serial Monitor [output](https://github.com/PaulskPt/qwstpad-arduino/blob
    ```bash
    git clone https://github.com/paulskpt/qwstpad-arduino.git
 
-2. Open Feather_QwstPad_test.ino in the Arduino IDE or VSCode with PlatformIO.
+2. Open Feather_QwstPad_test.ino in the Arduino IDE v2 or VSCode with PlatformIO.
 
 3. Connect your QwstPad boards via I²C.
 
-4. Upload the sketch to your Feather ESP32-S3 TFT.
+4. Build and upload the sketch to your Feather ESP32-S3 TFT.
 
 ## 🧪 Example output
 ```
