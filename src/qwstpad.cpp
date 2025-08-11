@@ -38,7 +38,16 @@ std::vector<padConfig> padConfigs = {
         .logic = ACTIVE_HIGH,
         .buttonPins = {}
     }
-    // Add more padConfigs as needed
+    {
+        .padID = 2,
+        .logic = ACTIVE_HIGH,
+        .buttonPins = {}
+    },
+    {
+        .padID = 3,
+        .logic = ACTIVE_HIGH,
+        .buttonPins = {}
+    }
 };
 
 const std::unordered_map<std::string, uint8_t> BUTTON_MAPPING = {
