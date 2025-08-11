@@ -50,6 +50,7 @@ std::vector<padConfig> padConfigs = {
     }
 };
 
+
 const std::unordered_map<std::string, uint8_t> BUTTON_MAPPING = {
     {"U", 0x1},  // Value: 1, 2, 3, 4, 5, B, C, D, E, F 
     {"L", 0x2}, 
@@ -467,11 +468,11 @@ int8_t QwstPad::setLogicType(LogicType type) {
         __config->logic = type;  // ✅ Now allowed
     }
 
-    Serial.print(F("QwstPad::getLogicType(): "));
+    Serial.print(F("QwstPad::setLogicType(): "));
     pr_PadID();
 
     if (__config) {
-        Serial.print(F("Logic type: "));
+        Serial.print(F(", logic type set to: "));
         Serial.println(__config->logic == ACTIVE_LOW ? "ACTIVE_LOW" : "ACTIVE_HIGH");
         return static_cast<int8_t>(__config->logic);
     }
