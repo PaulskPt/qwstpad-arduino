@@ -25,7 +25,7 @@ This library enables seamless communication with multiple QwstPad boards over I�
 ```
 examples
   ├── Feather_QwstPad_test.ino # Arduino sketch for testing 
-  ├── Feather_QwstPad_ButtonEvents_test.ino # Arduino sketch for testing Button Events
+  ├── Feather_ESP32-S3_TFT_Qwstpad_ButtonEvents_test.ino # Arduino sketch for testing Button Events
 src
   ├── qwstpad.h # QwstPad class header 
   ├── qwstpad.cpp # QwstPad class implementation 
