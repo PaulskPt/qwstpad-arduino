@@ -137,7 +137,7 @@ public:
     void pr_PadID() const;
     uint32_t getButtonBitfield(bool fancy);
     int8_t getFirstPressedButtonBitIndex();
-    String getFirstPressedButtonName();
+    std::string getFirstPressedButtonName();
     int8_t getLogicType();
     int8_t setLogicType(LogicType type);
     std::vector<ButtonEvent> pollEvents();

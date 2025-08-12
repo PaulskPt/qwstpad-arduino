@@ -45,6 +45,19 @@ struct padBtn {
   unsigned long lastDebounceTime[NUM_BUTTONS] = {0};
 };
 
+std::map<std::string, std::string> keyAliases = {
+  {"X", "X"},
+  {"Y", "Y"},
+  {"A", "A"},
+  {"B", "B"},  
+  {"P", "PLUS"},
+  {"M", "MINUS"},
+  {"U", "UP"},
+  {"L", "LEFT"},
+  {"R", "RIGHT"},
+  {"D", "DOWN"}
+};
+
 #define DEFAULT_I2C_PORT &Wire
 #define CURRENT_MAX_PADS 2
 
@@ -53,6 +66,111 @@ struct padBtn {
 QwstPad* pads[CURRENT_MAX_PADS];  // Declare globally as pointers
 
 padBtn padLogic[CURRENT_MAX_PADS]; // Logic array aligned with pads
+
+void blink_a_led(padBtn &padLogic, bool all_leds = false) {
+  static constexpr const char txt0[] PROGMEM = "blink_a_led(): ";
+  uint8_t pad_idx = padLogic.padID;
+  int8_t btn_idx = pads[pad_idx]->getFirstPressedButtonBitIndex();
+  std::string key = pads[pad_idx]->getFirstPressedButtonName();
+  std::string key_mod = keyAliases.count(key) ? keyAliases[key] : key;
+  uint8_t led_index = 0;
+
+  if (btn_idx >= BUTTON_UP && btn_idx <= BUTTON_X) {
+    Serial.print(txt0);
+    pads[pad_idx]->pr_PadID(); // Print the pad ID
+
+    if (!all_leds) {
+      switch (btn_idx) {
+        case BUTTON_UP:
+          led_index = 1; // LED for UP
+          break;
+        case BUTTON_LEFT:
+          led_index = 2; // LED for DOWN
+          break;
+        case BUTTON_RIGHT:
+          led_index = 3; // LED for LEFT
+          break;
+        case BUTTON_DOWN:
+          led_index = 4; // LED for RIGHT
+          break;
+        case BUTTON_MINUS:
+          led_index = 1; // LED for MINUS
+          break;
+        case BUTTON_PLUS:
+          led_index = 4; // LED for PLUS
+          break;
+        case BUTTON_X:
+          led_index = 1; // LED for X
+          break;
+        case BUTTON_Y:
+          led_index = 2; // LED for Y
+          break;
+        case BUTTON_A:
+          led_index = 3; // LED for A
+          break;
+        case BUTTON_B:
+          led_index = 4; // LED for B
+          break;
+        default:
+          Serial.print(F("Invalid button index: "));
+          Serial.println(btn_idx);
+          return; // Invalid button index, do not proceed
+      }
+#ifdef MY_DEBUG
+      Serial.print(F(", LED index: "));
+      Serial.println(led_index, DEC);
+#endif
+      Serial.print(F(", blinking one LED for button: \'"));
+      //Serial.println(btn_idx);
+      Serial.print(key_mod.c_str());
+      Serial.println("\'");
+      pads[pad_idx]->clear_leds(); // Clear all LEDs first
+      delay(500); // Keep the LEDs off for 500 ms
+      pads[pad_idx]->set_led(led_index, true); // Turn on specific LED
+    } else {
+      Serial.println(F("blinking all LEDs"));
+      pads[pad_idx]->clear_leds(); // Clear all LEDs first
+      delay(500); // Keep the LEDs off for 500 ms
+      pads[pad_idx]->set_leds(pads[pad_idx]->address_code());
+    }
+    delay(500); // Keep the LED(s) on for 500 ms
+    if (all_leds)
+      pads[pad_idx]->clear_leds(); // Turn off all LEDs
+    else 
+      pads[pad_idx]->set_led(led_index, false); // Turn off specific LED
+  } else {
+    Serial.print(F("Invalid button index: "));
+    Serial.println(btn_idx);
+    return; // Invalid button index, do not proceed
+  }
+}
+
+void clr_buttons(uint8_t i, bool all = false) {
+  if (i < 0 || i >= CURRENT_MAX_PADS) {
+    Serial.println(F("Invalid pad index in clr_buttons()"));
+    return;
+  }
+
+  if (all) { // Clear all pads
+    for (int i = 0; i < NUM_BUTTONS; ++i) {
+      padLogic[i].buttons = 0; // Clear the button state
+      padLogic[i].buttons_old = 0; // Clear the old button state
+      padLogic[i].a_button_has_been_pressed = false; // Reset the flag
+      padLogic[i].buttonPressed[i] = 0; // Clear the button state
+      padLogic[i].lastButtonState[i] = false; // Reset last button state
+      padLogic[i].currentButtonState[i] = false; // Reset current button state
+      padLogic[i].lastDebounceTime[i] = 0; // Reset debounce time
+    }
+  } else { // Clear only the specified pad
+    padLogic[i].buttons = 0; // Clear the button state
+    padLogic[i].buttons_old = 0; // Clear the old button state
+    padLogic[i].a_button_has_been_pressed = false; // Reset the flag
+    padLogic[i].buttonPressed[i] = 0; // Clear the button state
+    padLogic[i].lastButtonState[i] = false; // Reset last button state
+    padLogic[i].currentButtonState[i] = false; // Reset current button state
+    padLogic[i].lastDebounceTime[i] = 0; // Reset debounce time
+  }
+}
 
 void setup() {
 
@@ -74,28 +192,7 @@ void setup() {
   }
   
   Wire.begin();
-/*
-  pad = new QwstPad(DEFAULT_I2C_PORT, DEFAULT_ADDRESS);  // Instantiate with required args
-  pad->begin();  // Initialize the pad (assuming this sets up pins, etc.)
-  pad->setLogicType(ACTIVE_HIGH);  // Configure logic type via method
-  bool isConnected = pad->isConnected();
-  uint16_t pAddress = pad->getAddress();
-  static constexpr const char* txts[] PROGMEM = {"not ", "connected"};
-  Serial.print(F("Pad is "));
-  if (isConnected) {  
-    padLogic[0].address = pAddress;
-    padLogic[0].use_qwstpad = true;
-	  Serial.println(txts[1]);
-    Serial.print(F("Address: 0x"));
-    Serial.println(pAddress, HEX);
-  	NUM_PADS++;
-  } else {
-    Serial.print(txts[0]);
-    Serial.println(txts[1]);
-    padLogic[0].address = 0;
-    padLogic[0].use_qwstpad = false;
-  }
-*/
+
   pads[0] = new QwstPad(DEFAULT_I2C_PORT, 0x21); // DEFAULT_ADDRESS);
   pads[1] = new QwstPad(DEFAULT_I2C_PORT, 0x23); // ALT_ADDRESS_1);
   //pads[2] = new QwstPad(DEFAULT_I2C_PORT, ALT_ADDRESS_2);
@@ -165,21 +262,14 @@ void loop() {
   static unsigned long lastPollTime = 0;
   const unsigned long pollInterval = 50;
   unsigned long currentTime = millis();
-  std::map<std::string, std::string> keyAliases = {
-  {"X", "X"},
-  {"Y", "Y"},
-  {"A", "A"},
-  {"B", "B"},  
-  {"P", "PLUS"},
-  {"M", "MINUS"},
-  {"U", "UP"},
-  {"L", "LEFT"},
-  {"R", "RIGHT"},
-  {"D", "DOWN"}
-};
 
   if (currentTime - lastPollTime >= pollInterval) {
     lastPollTime = currentTime;
+
+    for (uint8_t i = 0; i < NUM_PADS; i++) {
+      pads[i]->clear_leds(); // Clear all LEDs
+      clr_buttons(i); // Clear the button states
+    }
 
     for (uint8_t i = 0; i < NUM_PADS; i++) {
       //keyEvent = pads[i].pollEvents();
@@ -194,9 +284,9 @@ void loop() {
         std::vector<ButtonEvent> keyEvent = pads[i]->pollEvents();
 
         size_t EventSz = keyEvent.size();
-        std::string key;
-        std::string key_mod = keyAliases.count(key) ? keyAliases[key] : key;
-        
+        //std::string key;
+        //std::string key_mod = keyAliases.count(key) ? keyAliases[key] : key;
+
         if (EventSz > 0) {
           // Serial.print("Event count: ");
           // Serial.println(EventSz);
@@ -210,6 +300,9 @@ void loop() {
               Serial.print(key_mod.c_str());
               Serial.print("', button: ");
               Serial.println(event.type == PRESSED ? "PRESSED" : "RELEASED");
+              if (event.type == PRESSED) {
+                 blink_a_led(padLogic[i], false); // Blink an individual LED
+              }
             }
           }
         }

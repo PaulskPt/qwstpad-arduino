@@ -421,7 +421,7 @@ int8_t QwstPad::getFirstPressedButtonBitIndex() {
     return -1; // No button pressed
 }
 
-String QwstPad::getFirstPressedButtonName() {
+std::string QwstPad::getFirstPressedButtonName() {
     std::map<std::string, bool> __btn_states = read_buttons();  // Update button states
     bool pressed = false;
 
@@ -434,18 +434,18 @@ String QwstPad::getFirstPressedButtonName() {
             continue;
         }
         if (pressed) {
-            // Optional debug output
 #ifdef MY_DEBUG
             pr_PadID();
             Serial.print(F(", first pressed key: "));
             Serial.println(entry.first.c_str());
-    #endif
-            return String(entry.first.c_str());  // Return the key name
+#endif
+            return entry.first;  // Return as std::string
         }
     }
 
-    return "";  // No button pressed
+    return std::string();  // No button pressed
 }
+
 
 void QwstPad::pr_spc(uint8_t cnt) const {
     for (uint8_t i = 0; i < cnt; i++) {

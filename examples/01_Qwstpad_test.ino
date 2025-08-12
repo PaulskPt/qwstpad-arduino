@@ -46,6 +46,19 @@ struct padBtn {
   unsigned long lastDebounceTime[NUM_BUTTONS] = {0};
 };
 
+std::map<std::string, std::string> keyAliases = {
+  {"X", "X"},
+  {"Y", "Y"},
+  {"A", "A"},
+  {"B", "B"},  
+  {"P", "PLUS"},
+  {"M", "MINUS"},
+  {"U", "UP"},
+  {"L", "LEFT"},
+  {"R", "RIGHT"},
+  {"D", "DOWN"}
+};
+
 std::map<std::string, bool> buttons;
 
 #define CURRENT_MAX_PADS 2
@@ -108,6 +121,8 @@ void blink_a_led(padBtn &padLogic, bool all_leds = false) {
   static constexpr const char txt0[] PROGMEM = "blink_a_led(): ";
   uint8_t pad_idx = padLogic.padID;
   int8_t btn_idx = pads[pad_idx]->getFirstPressedButtonBitIndex();
+  std::string key = pads[pad_idx]->getFirstPressedButtonName();
+  std::string key_mod = keyAliases.count(key) ? keyAliases[key] : key;
   uint8_t led_index = 0;
 
   if (btn_idx >= BUTTON_UP && btn_idx <= BUTTON_X) {
@@ -151,17 +166,19 @@ void blink_a_led(padBtn &padLogic, bool all_leds = false) {
           Serial.println(btn_idx);
           return; // Invalid button index, do not proceed
       }
-#ifndef MY_DEBUG
+#ifdef MY_DEBUG
       Serial.print(F(", LED index: "));
       Serial.println(led_index, DEC);
 #endif
-      Serial.print(F("blinking one LED for button ID: "));
-      Serial.println(btn_idx);
+      Serial.print(F(", blinking one LED for button: \'"));
+      //Serial.println(btn_idx);
+      Serial.print(key_mod.c_str());
+      Serial.println("\'");
       pads[pad_idx]->clear_leds(); // Clear all LEDs first
       delay(500); // Keep the LEDs off for 500 ms
       pads[pad_idx]->set_led(led_index, true); // Turn on specific LED
     } else {
-      Serial.println(F("blinking all LEDs"));
+      Serial.println(F(", blinking all LEDs"));
       pads[pad_idx]->clear_leds(); // Clear all LEDs first
       delay(500); // Keep the LEDs off for 500 ms
       pads[pad_idx]->set_leds(pads[pad_idx]->address_code());
@@ -178,10 +195,11 @@ void blink_a_led(padBtn &padLogic, bool all_leds = false) {
   }
 }
 
+
 void handleButtonPress(padBtn &padLogic, uint8_t pad_idx) {
   static constexpr const char txt0[] PROGMEM = "handleButtonPress(): ";
   static constexpr const char txt1[] PROGMEM = " button pressed";
-  String key = pads[pad_idx]->getFirstPressedButtonName();
+  std::string key = pads[pad_idx]->getFirstPressedButtonName();
   bool found = false;
 
   struct ButtonLabel {
@@ -211,7 +229,8 @@ void handleButtonPress(padBtn &padLogic, uint8_t pad_idx) {
     pads[pad_idx]->pr_PadID(); // Print the pad ID
     Serial.print(F(", "));
     
-    char k = key.charAt(0);  // Get first character
+    //char k = key.charAt(0);  // Get first character (if key is of type String)
+    char k = key.empty() ? '\0' : key[0]; // Get first character (if key is of type std::string)
 
     for (const auto& entry : labels) {
       if (entry.key == k) {
@@ -223,7 +242,7 @@ void handleButtonPress(padBtn &padLogic, uint8_t pad_idx) {
     }
     if (!found) {
       Serial.print(F("Unknown '"));
-      Serial.print(key);
+      Serial.print(key.c_str());
       Serial.print(F("'"));
     } else {
       blink_a_led(padLogic, false); // Blink all LEDs
@@ -410,7 +429,7 @@ while (true) {
         if (use_qwstpad) {
           // Note: getButtonBitfield() calls read_buttons, which calls update().
           // Poll pads[i]. Param: false = not use the fancy printing
-          padLogic[i].buttons = pads[i]->getButtonBitfield(true);
+          padLogic[i].buttons = pads[i]->getButtonBitfield(false); // not using fancy print
           //padLogic[i].key = pads[i]->getFirstPressedButtonName();
           handleButtonPress(padLogic[i], i); // Handle button press
           
