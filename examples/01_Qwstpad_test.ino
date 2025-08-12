@@ -283,6 +283,8 @@ void setup() {
   Serial.begin(115200);  // Or whatever baud rate you're using
   while (!Serial) delay(10);
   
+  Serial.println(F("QwstPad test"));
+
   // esp_reset_reason_t reason = esp_reset_reason();
   // Serial.print(F("Reset cause: "));
   // Serial.println(reason);
