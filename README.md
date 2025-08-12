@@ -181,13 +181,18 @@ Maximum number of QwSTPads: 2
 Pad 1, I2C address: 0x21, is connected
 Pad 2, I2C address: 0x23, is connected
 Number of connected pads: 2
-Pad 1, button state changed for: 'DOWN', button: PRESSED
-Pad 1, button state changed for: 'DOWN', button: RELEASED
+Pad 1, button state changed for: 'Y', button: PRESSED
+blink_a_led(): Pad 1, blinking one LED for button: 'Y'
+Pad 1, button state changed for: 'Y', button: RELEASED
+Pad 1, button state changed for: 'LEFT', button: PRESSED
+blink_a_led(): Pad 1, blinking one LED for button: 'LEFT'
+Pad 1, button state changed for: 'LEFT', button: RELEASED
 Pad 2, button state changed for: 'PLUS', button: PRESSED
-Pad 2, bButton state changed for: 'PLUS', button: RELEASED
-Pad 1, button state changed for: 'MINUS', button: PRESSED
-Pad 1, button state changed for: 'MINUS', button: RELEASED
-
+blink_a_led(): Pad 2, blinking one LED for button: 'PLUS'
+Pad 2, button state changed for: 'PLUS', button: RELEASED
+Pad 2, button state changed for: 'X', button: PRESSED
+blink_a_led(): Pad 2, blinking one LED for button: 'X'
+Pad 2, button state changed for: 'X', button: RELEASED
 Alternative output:
 
 Current button states:
