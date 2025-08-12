@@ -25,7 +25,7 @@ This library enables seamless communication with multiple QwstPad boards over I�
 ```
 examples
   ├── 01_Qwstpad_test.ino # Arduino sketch for testing 
-  ├── 02_Qwstpad_ButtonEvents_test.ino # Arduino sketch for testing Button Events
+  ├── 02_Qwstpad_ButtonEvents_2pad_test.ino # Arduino sketch for testing Button Events
 src
   ├── qwstpad.h # QwstPad class header 
   ├── qwstpad.cpp # QwstPad class implementation 
@@ -136,22 +136,22 @@ This sketch demonstrates how to use the QwstPad class to detect and handle butto
 
 Initializes the QwstPad and configures it for ACTIVE_HIGH logic.
 
-Uses pad->update() to refresh internal button states.
+Uses pads[i]->update() to refresh internal button states of each pad.
 
-Calls pad->pollEvents() to retrieve a list of ButtonEvent objects.
+Calls pad[i]->pollEvents() to retrieve a list of ButtonEvent objects of a pad.
 
 Prints each detected event to the Serial Monitor in the format:
 
-Button: <key> - PRESSED
-Button: <key> - RELEASED
+Pad1, button: <key> - PRESSED
+Pad1, button: <key> - RELEASED
 
 🧠 How example 2 works:
 
-The sketch polls the pad every 50ms.
+The sketch polls the pads every 50ms.
 
-Internally, update() tracks current and previous button states.
+Internally, pads[i]->update() tracks current and previous button states.
 
-pollEvents() compares those states to detect transitions.
+pads[i]->pollEvents() compares those states to detect transitions.
 
 Events are returned as a std::vector<ButtonEvent>, each containing:
 
@@ -164,14 +164,18 @@ type: either PRESSED or RELEASED
 ```
 QwstPad ButtonEvent test
 ✅ Found MAX17048 with Chip ID: 0xC
-Pad is connected
-Address: 0x21
-Button state changed for: 'DOWN', button: PRESSED
-Button state changed for: 'DOWN', button: RELEASED
-Button state changed for: 'PLUS', button: PRESSED
-Button state changed for: 'PLUS', button: RELEASED
-Button state changed for: 'MINUS', button: PRESSED
-Button state changed for: 'MINUS', button: RELEASED
+QwstPad::init(): Pad 1
+QwstPad::init(): Pad 2
+Maximum number of QwSTPads: 2
+Pad 1, I2C address: 0x21, is connected
+Pad 2, I2C address: 0x23, is connected
+Number of connected pads: 2
+Pad 1, button state changed for: 'DOWN', button: PRESSED
+Pad 1, button state changed for: 'DOWN', button: RELEASED
+Pad 2, button state changed for: 'PLUS', button: PRESSED
+Pad 2, bButton state changed for: 'PLUS', button: RELEASED
+Pad 1, button state changed for: 'MINUS', button: PRESSED
+Pad 1, button state changed for: 'MINUS', button: RELEASED
 
 Alternative output:
 
