@@ -170,8 +170,8 @@ Button: U - RELEASED
 Button: M - PRESSED
 Button: M - RELEASED
 
-Note: "M" = button MINUS
-      "P" = button PLUS
+Note: "M" = button MINUS (-)
+      "P" = button PLUS  (+)
 
 Alternative output:
 
