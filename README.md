@@ -154,7 +154,7 @@ pollEvents() compares those states to detect transitions.
 
 Events are returned as a std::vector<ButtonEvent>, each containing:
 
-key: the button identifier (e.g. "U", "M")
+key: the button identifier (e.g. "UP", "MINUS")
 
 type: either PRESSED or RELEASED
 
