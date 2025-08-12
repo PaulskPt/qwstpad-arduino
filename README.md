@@ -33,7 +33,7 @@ doc
   ├── Example1_monitor_output.txt
   ├── Example1_monitor_output_2.txt
   ├── Example_2_monitor_output.txt
-  ├── Example2_monitor_output_2.txt
+  ├── Example2_monitor_output_v2.txt
 images
   ├── hardware_used.jpg
   ├── qwstpads_back.jpg
