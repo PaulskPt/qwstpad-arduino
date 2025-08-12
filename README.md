@@ -185,6 +185,13 @@ A: 0, B: 0, D: 0, L: 0, M: 0, P: 0, R: 0, U: 0, X: 0, Y: 0,
 Previous button states:
 A: 0, B: 0, D: 0, L: 0, M: 1, P: 0, R: 0, U: 0, X: 0, Y: 0, 
 Button: M - RELEASED
+
+Note: if you want this alternative output uncomment lines 111, 127 and 128.
+
+111 // bool btnPressed = pad->debugPrintStates();
+
+127 //if (btnPressed)
+128 //  delay(3000);  // Give user time to view the results
 ```
 This sketch is ideal for building interactive applications — from gamepads to control panels — where reacting to button events is more useful than polling raw states.
 
