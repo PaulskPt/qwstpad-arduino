@@ -104,11 +104,11 @@ blinking one LED for button ID: 1
 
 This port was carefully debugged to resolve logic inversion issues and ensure consistent behavior across multiple pads. The code is modular and ready for extension — whether you want to add debounce logic, event callbacks, or integrate with other peripherals. In this moment a sort of debounce method is used by a polling timing in the loop() function of the sketch, set in:
 ```
-391 const unsigned long pollInterval = 300;  // 300 milliseconds
+411 const unsigned long pollInterval = 300;  // 300 milliseconds
 ```
 and in:
 ```
-397  if (start || currentTime - lastPollTime >= pollInterval) {
+417  if (start || currentTime - lastPollTime >= pollInterval) {
 ```
 
 ### Notes about example 2
@@ -117,7 +117,7 @@ This example sketch also makes use of new internal features added to the QwstPad
 
 QwstPad::debugPrintStates() — prints the current button states for debugging. To use this feature: uncomment line:
 ```
-    111 // bool btnPressed = pad->debugPrintStates();
+    282 // bool btnPressed = pad->debugPrintStates();
 ```
 
 getCurrentStates() and getPreviousStates() — expose internal state maps for advanced use.
@@ -196,10 +196,10 @@ Pad 1, button state changed for: 'X', button: RELEASED
 
 Note: if you want this alternative output uncomment lines 192, 216 and 217.
 
-111 // bool btnPressed = pad->debugPrintStates();
+282 // bool btnPressed = pad->debugPrintStates();
 
-138 //if (btnPressed)
-139 //  delay(3000);  // Give user time to view the results
+309 //if (btnPressed)
+310 //  delay(3000);  // Give user time to view the results
 ```
 This sketch is ideal for building interactive applications — from gamepads to control panels — where reacting to button events is more useful than polling raw states.
 
