@@ -149,7 +149,7 @@ Initializes the QwstPad and configures it for ACTIVE_HIGH logic.
 
 Uses pads[i]->update() to refresh internal button states of each pad.
 
-Calls pad[i]->pollEvents() to retrieve a list of ButtonEvent objects of a pad.
+Calls pads[i]->pollEvents() to retrieve a list of ButtonEvent objects of a pad.
 
 Prints each detected event to the Serial Monitor in the format:
 
