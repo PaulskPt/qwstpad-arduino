@@ -1,5 +1,5 @@
 /*
-  * Feather_ESP32-S3_TFT_Qwstpad_test.ino
+  * 01_Qwstpad_test.ino
   * 
   * This sketch is designed to test the QwstPad functionality with the Feather ESP32-S3 TFT.
   * It initializes the QwstPad, reads button states, and manages LED states.
