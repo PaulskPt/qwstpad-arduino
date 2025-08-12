@@ -113,15 +113,26 @@ void loop() {
     std::vector<ButtonEvent> keyEvent = pad->pollEvents();
 
     size_t EventSz = keyEvent.size();
+    std::string key;
+    std::string key_mod;
     
     if (EventSz > 0) {
       // Serial.print("Event count: ");
       // Serial.println(EventSz);
       for (const ButtonEvent& event : keyEvent) {
-        Serial.print("Button: ");
-        Serial.print(event.key.c_str());
-        Serial.print(" - ");
-        Serial.println(event.type == PRESSED ? "PRESSED" : "RELEASED");
+        key = event.key;    
+        if (key == "M")
+          key_mod = "MINUS";
+        else if (key == "P")
+          key_mod = "PLUS";
+        else
+          key_mod = key;
+        if (pad->buttonChanged(key)) {
+          Serial.print("Button state changed for: \'");
+          Serial.print(key_mod.c_str()); 
+          Serial.print("\', button: ");
+          Serial.println(event.type == PRESSED ? "PRESSED" : "RELEASED");
+        }
       }
     }
     //if (btnPressed)
