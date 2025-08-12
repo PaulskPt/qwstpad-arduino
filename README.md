@@ -180,17 +180,21 @@ Pad 1, button state changed for: 'MINUS', button: RELEASED
 Alternative output:
 
 Current button states:
-A: 0, B: 0, D: 0, L: 0, M: 1, P: 0, R: 0, U: 0, X: 0, Y: 0, 
+A: 0, B: 0, D: 0, L: 0, M: 0, P: 0, R: 0, U: 0, X: 1, Y: 0, 
 Previous button states:
 A: 0, B: 0, D: 0, L: 0, M: 0, P: 0, R: 0, U: 0, X: 0, Y: 0, 
-Button state changed for: 'MINUS', button: PRESSED
+Pad 1, button state changed for: 'X', button: PRESSED
 Current button states:
 A: 0, B: 0, D: 0, L: 0, M: 0, P: 0, R: 0, U: 0, X: 0, Y: 0, 
 Previous button states:
-A: 0, B: 0, D: 0, L: 0, M: 1, P: 0, R: 0, U: 0, X: 0, Y: 0, 
-Button state changed for: 'MINUS', button: RELEASED
+A: 0, B: 0, D: 0, L: 0, M: 0, P: 0, R: 0, U: 0, X: 0, Y: 0, 
+Current button states:
+A: 0, B: 0, D: 0, L: 0, M: 0, P: 0, R: 0, U: 0, X: 0, Y: 0, 
+Previous button states:
+A: 0, B: 0, D: 0, L: 0, M: 0, P: 0, R: 0, U: 0, X: 1, Y: 0, 
+Pad 1, button state changed for: 'X', button: RELEASED
 
-Note: if you want this alternative output uncomment lines 111, 138 and 139.
+Note: if you want this alternative output uncomment lines 192, 216 and 217.
 
 111 // bool btnPressed = pad->debugPrintStates();
 
