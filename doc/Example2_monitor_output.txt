@@ -1,0 +1,55 @@
+Tuesday 2025-08-12, 02h22 utc +1
+Board: Adafruit Feather_ESP32-S3 TFT
+       with connected via I2C: 2 x Pimoroni QwstPad.
+
+IDE: Arduino v.2.3.5
+Sketch: Feather_ESP32-S3_TFT_Qwstpad_ButtonEvents_test.ino
+with own built QwstPad class (C++).
+
+
+QwstPad ButtonEvent test
+✅ Found MAX17048 with Chip ID: 0xC
+QwstPad::init(): Pad 1
+QwstPad::setLogicType(): Pad 1, logic type set to: ACTIVE_HIGH
+is connected
+Address: 0x21
+Button: U - PRESSED
+Button: U - RELEASED
+Button: M - PRESSED
+Button: M - RELEASED
+Button: P - PRESSED
+Button: P - RELEASED
+Button: B - PRESSED
+Button: B - RELEASED
+
+-------------------------------------------------
+Output with use of the following three lines uncommented:
+
+98  bool btnPressed = pad->debugPrintStates();
+
+114  if (btnPressed)
+115      delay(3000);  // Give user time to view the results
+
+QwstPad ButtonEvent test
+
+✅ Found MAX17048 with Chip ID: 0xC
+QwstPad::init(): Pad 1
+QwstPad::setLogicType(): Pad 1, logic type set to: ACTIVE_HIGH
+is connected
+Address: 0x21
+Current button states:
+A: 0, B: 0, D: 0, L: 0, M: 0, P: 0, R: 0, U: 0, X: 0, Y: 0, 
+Previous button states:
+A: 0, B: 0, D: 0, L: 0, M: 1, P: 0, R: 0, U: 0, X: 0, Y: 0, 
+Previous button states:
+A: 0, B: 0, D: 0, L: 0, M: 0, P: 0, R: 0, U: 0, X: 0, Y: 0, 
+Button: M - PRESSED
+Current button states:
+A: 0, B: 0, D: 0, L: 0, M: 0, P: 0, R: 0, U: 0, X: 0, Y: 0, 
+Previous button states:
+A: 0, B: 0, D: 0, L: 0, M: 1, P: 0, R: 0, U: 0, X: 0, Y: 0, 
+Button: M - RELEASED
+Current button states:
+A: 0, B: 0, D: 0, L: 0, M: 0, P: 0, R: 0, U: 0, X: 0, Y: 0, 
+Previous button states:
+A: 0, B: 0, D: 0, L: 0, M: 0, P: 0, R: 0, U: 0, X: 0, Y: 0, 
