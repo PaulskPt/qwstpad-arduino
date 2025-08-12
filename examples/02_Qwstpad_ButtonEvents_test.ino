@@ -101,6 +101,18 @@ void loop() {
   static unsigned long lastPollTime = 0;
   const unsigned long pollInterval = 50;
   unsigned long currentTime = millis();
+  std::map<std::string, std::string> keyAliases = {
+  {"X", "X"},
+  {"Y", "Y"},
+  {"A", "A"},
+  {"B", "B"},  
+  {"P", "PLUS"},
+  {"M", "MINUS"},
+  {"U", "UP"},
+  {"L", "LEFT"},
+  {"R", "RIGHT"},
+  {"D", "DOWN"}
+};
 
   if (currentTime - lastPollTime >= pollInterval) {
     lastPollTime = currentTime;
@@ -114,23 +126,18 @@ void loop() {
 
     size_t EventSz = keyEvent.size();
     std::string key;
-    std::string key_mod;
+    std::string key_mod = keyAliases.count(key) ? keyAliases[key] : key;
     
     if (EventSz > 0) {
       // Serial.print("Event count: ");
       // Serial.println(EventSz);
       for (const ButtonEvent& event : keyEvent) {
-        key = event.key;    
-        if (key == "M")
-          key_mod = "MINUS";
-        else if (key == "P")
-          key_mod = "PLUS";
-        else
-          key_mod = key;
+        std::string key = event.key;
+        std::string key_mod = keyAliases.count(key) ? keyAliases[key] : key;
         if (pad->buttonChanged(key)) {
-          Serial.print("Button state changed for: \'");
-          Serial.print(key_mod.c_str()); 
-          Serial.print("\', button: ");
+          Serial.print("Button state changed for: '");
+          Serial.print(key_mod.c_str());
+          Serial.print("', button: ");
           Serial.println(event.type == PRESSED ? "PRESSED" : "RELEASED");
         }
       }
