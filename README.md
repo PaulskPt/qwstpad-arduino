@@ -116,7 +116,7 @@ This example sketch also makes use of new internal features added to the QwstPad
 
 QwstPad::debugPrintStates() — prints the current button states for debugging. To use this feature: uncomment line:
 ```
-    98 // bool btnPressed = pad->debugPrintStates();
+    111 // bool btnPressed = pad->debugPrintStates();
 ```
 
 getCurrentStates() and getPreviousStates() — expose internal state maps for advanced use.
@@ -165,13 +165,14 @@ QwstPad ButtonEvent test
 ✅ Found MAX17048 with Chip ID: 0xC
 is connected
 Address: 0x21
-Button: U - PRESSED
-Button: U - RELEASED
-Button: M - PRESSED
-Button: M - RELEASED
-
-Note: "M" = button MINUS (-)
-      "P" = button PLUS  (+)
+Button state changed for: 'MINUS', button: PRESSED
+Button state changed for: 'MINUS', button: RELEASED
+Button state changed for: 'PLUS', button: PRESSED
+Button state changed for: 'PLUS', button: RELEASED
+Button state changed for: 'U', button: PRESSED
+Button state changed for: 'U', button: RELEASED
+Button state changed for: 'B', button: PRESSED
+Button state changed for: 'B', button: RELEASED
 
 Alternative output:
 
@@ -190,8 +191,8 @@ Note: if you want this alternative output uncomment lines 111, 127 and 128.
 
 111 // bool btnPressed = pad->debugPrintStates();
 
-127 //if (btnPressed)
-128 //  delay(3000);  // Give user time to view the results
+138 //if (btnPressed)
+139 //  delay(3000);  // Give user time to view the results
 ```
 This sketch is ideal for building interactive applications — from gamepads to control panels — where reacting to button events is more useful than polling raw states.
 
