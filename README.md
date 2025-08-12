@@ -165,14 +165,12 @@ QwstPad ButtonEvent test
 ✅ Found MAX17048 with Chip ID: 0xC
 is connected
 Address: 0x21
-Button state changed for: 'MINUS', button: PRESSED
-Button state changed for: 'MINUS', button: RELEASED
+Button state changed for: 'DOWN', button: PRESSED
+Button state changed for: 'DOWN', button: RELEASED
 Button state changed for: 'PLUS', button: PRESSED
 Button state changed for: 'PLUS', button: RELEASED
-Button state changed for: 'U', button: PRESSED
-Button state changed for: 'U', button: RELEASED
-Button state changed for: 'B', button: PRESSED
-Button state changed for: 'B', button: RELEASED
+Button state changed for: 'MINUS', button: PRESSED
+Button state changed for: 'MINUS', button: RELEASED
 
 Alternative output:
 
