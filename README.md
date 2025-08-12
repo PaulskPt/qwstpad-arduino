@@ -202,7 +202,7 @@ MIT License — feel free to use, modify, and share.
 
 ## 🙌 Acknowledgements 
 
-Special thanks to the original QwstPad project and the Pimoroni and Adafruit communities for their excellent hardware and documentation.
+Special thanks to the original QwstPad project and the Pimoroni and Adafruit communities for their excellent hardware and documentation. Thanks to Microsoft Copilot for the great assistance!
 
 ## Hardware used
 
