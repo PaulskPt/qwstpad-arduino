@@ -1,4 +1,4 @@
-Tuesday 2025-08-12, 13h12 utc +1
+Tuesday 2025-08-12 13h57 utc +1
 Board: Adafruit Feather_ESP32-S3 TFT
        with connected via I2C: 2 x Pimoroni QwstPad.
 
@@ -12,11 +12,23 @@ QwstPad::init(): Pad 1
 QwstPad::setLogicType(): Pad 1, logic type set to: ACTIVE_HIGH
 Pad is connected
 Address: 0x21
-Button state changed for: 'MINUS', button: PRESSED
-Button state changed for: 'MINUS', button: RELEASED
+Button state changed for: 'UP', button: PRESSED
+Button state changed for: 'UP', button: RELEASED
+Button state changed for: 'DOWN', button: PRESSED
+Button state changed for: 'DOWN', button: RELEASED
 Button state changed for: 'PLUS', button: PRESSED
 Button state changed for: 'PLUS', button: RELEASED
-Button state changed for: 'U', button: PRESSED
-Button state changed for: 'U', button: RELEASED
+Button state changed for: 'MINUS', button: PRESSED
+Button state changed for: 'MINUS', button: RELEASED
+Button state changed for: 'LEFT', button: PRESSED
+Button state changed for: 'LEFT', button: RELEASED
+Button state changed for: 'RIGHT', button: PRESSED
+Button state changed for: 'RIGHT', button: RELEASED
+Button state changed for: 'X', button: PRESSED
+Button state changed for: 'X', button: RELEASED
+Button state changed for: 'Y', button: PRESSED
+Button state changed for: 'Y', button: RELEASED
+Button state changed for: 'A', button: PRESSED
+Button state changed for: 'A', button: RELEASED
 Button state changed for: 'B', button: PRESSED
 Button state changed for: 'B', button: RELEASED
