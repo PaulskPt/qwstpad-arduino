@@ -189,7 +189,7 @@ void loop() {
         pads[i]->update();
 
         // Read button states if you want to debug print them
-        // bool btnPressed = pad->debugPrintStates();
+        // bool btnPressed = pads[i]->debugPrintStates();
 
         std::vector<ButtonEvent> keyEvent = pads[i]->pollEvents();
 
