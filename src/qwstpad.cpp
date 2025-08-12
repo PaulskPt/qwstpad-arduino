@@ -49,7 +49,15 @@ std::vector<padConfig> padConfigs = {
         .buttonPins = {}
     }
 };
-
+/*
+// This is an alternative way to define padConfigs
+std::vector<padConfig> padConfigs = {
+    {0, ACTIVE_HIGH, {}},
+    {1, ACTIVE_HIGH, {}},
+    {2, ACTIVE_HIGH, {}},
+    {3, ACTIVE_HIGH, {}}
+};
+*/
 
 const std::unordered_map<std::string, uint8_t> BUTTON_MAPPING = {
     {"U", 0x1},  // Value: 1, 2, 3, 4, 5, B, C, D, E, F 
@@ -126,9 +134,12 @@ void QwstPad::init(TwoWire* i2c_port, uint8_t address) {
     __config = nullptr;  // Reset __config to nullptr before searching
     // Search for the padConfig that matches this->__padID
     for (size_t i = 0; i < padConfigs.size(); ++i) {
-        
         if (padConfigs[i].padID == this->__padID) {
             __config = &padConfigs[i];  // ✅ Safe: pointer to actual container element
+            __config->buttonPins.clear();
+            for (const auto& [key, value] : BUTTON_MAPPING) {
+                __config->buttonPins[key] = static_cast<int>(value);  // Store button pin indices
+            }
             break;
         }
     }
@@ -139,6 +150,7 @@ void QwstPad::init(TwoWire* i2c_port, uint8_t address) {
         __config = nullptr;
         this->__padID = -1;
         Serial.println(F("Warning: No config found for pad"));
+        return;  // Exit init() early
     }
     else {
 #ifdef MY_DEBUG
@@ -370,7 +382,7 @@ uint32_t QwstPad::getButtonBitfield(bool fancy = false) {
             pr_dashBar();
         } else {
             serialPrintf(PSTR("%s "),bf);
-            printBinary(result);
+            printBinary(result, fancy);
             Serial.println();
         }
     }
@@ -499,6 +511,32 @@ std::vector<ButtonEvent> QwstPad::pollEvents() {
 uintptr_t QwstPad::debugConfigPointer() const {
     return reinterpret_cast<uintptr_t>(__config);
 }
+
+bool QwstPad::debugPrintStates() const {
+  bool result = false;
+  Serial.println("Current button states:");
+  for (const auto& [key, state] : __button_states) {
+    Serial.print(key.c_str());
+    Serial.print(": ");
+    Serial.print(state);
+    if (state) {
+      result = true;  // At least one button is pressed
+    }
+    Serial.print(F(", "));
+  }
+  Serial.println();
+
+  Serial.println("Previous button states:");
+  for (const auto& [key, state] : __last_button_states) {
+    Serial.print(key.c_str());
+    Serial.print(": ");
+    Serial.print(state);
+    Serial.print(F(", "));
+  }
+  Serial.println();
+  return result;  // Return true if any button is pressed
+}
+
 
 void QwstPad::update() {
     static constexpr const char txt0[] PROGMEM = "QwstPad::update(): ";

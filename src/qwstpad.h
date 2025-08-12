@@ -142,7 +142,17 @@ public:
     int8_t setLogicType(LogicType type);
     std::vector<ButtonEvent> pollEvents();
     uintptr_t debugConfigPointer() const;
+    bool debugPrintStates() const;
     void update();
+
+    const std::map<std::string, bool>& getCurrentStates() const {
+      return __button_states;
+    }
+
+    const std::map<std::string, bool>& getPreviousStates() const {
+      return __last_button_states;
+    }
+
     bool wasPressed(const std::string& key) const;
     bool wasReleased(const std::string& key) const;
     bool buttonChanged(const std::string& key);
