@@ -94,8 +94,7 @@ then you get this output:
   | 00000 | 00000 | 00001 | <- Pad 1 bitfield
   +-------+-------+-------+
 handleButtonPress(): Pad 1, UP button pressed
-blink_a_led(): Pad 1, LED index: 1
-blinking one LED for button ID: 1
+blink_a_led(): Pad 2, blinking one LED for button: 'UP'
 ```
 
 ## 🛠️ Development notes
