@@ -1,6 +1,6 @@
 # QwstPad C++ Library for Pimoroni QwstPad (I2C Game Controller)
 
-🚀 A lightweight C++ port of the QwstPad library designed for use with Arduino and tested on an Adafruit Feather ESP32-S3 TFT board. 
+🚀 A C++ port of the QwstPad library designed for use with Arduino and tested on an Adafruit Feather ESP32-S3 TFT board. 
 This library enables seamless communication with multiple QwstPad boards over I²C, handling button input, LED control, and logic inversion with precision. The original of this port is the Pimoroni qwstpad-micropython library [repo](https://github.com/pimoroni/qwstpad-micropython/tree/main?tab=readme-ov-file)
 
 ## 📦 Features
