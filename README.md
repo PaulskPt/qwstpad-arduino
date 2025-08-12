@@ -163,7 +163,7 @@ type: either PRESSED or RELEASED
 ```
 QwstPad ButtonEvent test
 ✅ Found MAX17048 with Chip ID: 0xC
-is connected
+Pad is connected
 Address: 0x21
 Button state changed for: 'DOWN', button: PRESSED
 Button state changed for: 'DOWN', button: RELEASED
