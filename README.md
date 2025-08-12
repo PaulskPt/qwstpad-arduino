@@ -58,14 +58,26 @@ Link to Serial Monitor [output](https://github.com/PaulskPt/qwstpad-arduino/tree
 
 ## 🧪 Example 1 output
 ```
+QwstPad test
 ✅ Found MAX17048 with Chip ID: 0xC
+Calling scanI2CDevices...
 Scanning I2C bus...
 I2C device found at 0x21
 I2C device found at 0x23
+I2C device found at 0x36
+Scan complete. Devices found: 3
+Returned from scanI2CDevices.
+QwstPad::init(): Pad 1
+QwstPad::init(): Pad 2
+Maximum number of QwSTPads: 2
 Pad 1, I2C address: 0x21, is connected
 Pad 2, I2C address: 0x23, is connected
-handleButtonPress(): Pad 1, UP button pressed
-blink_a_led(): Pad 1, blinking all LEDs
+Number of connected pads: 2
+Pad 1 is initialized
+Pad 2 is initialized
+bitfield 00000 00000 00001
+handleButtonPress(): Pad 2, UP button pressed
+blink_a_led(): Pad 2, blinking one LED for button: 'UP'
 ```
 ## 📚 Documentation 
 
