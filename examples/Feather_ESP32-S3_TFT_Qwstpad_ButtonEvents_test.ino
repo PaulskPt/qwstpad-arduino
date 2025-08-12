@@ -1,11 +1,12 @@
 /* 
+  * Feather_ESP32-S3_TFT_Qwstpad_ButtonEvents_test.ino
+  *
   * Example of howto work with Button Events
   * Created by Paulus Schulinck (Github handle: @PaulskPt),
   * with assistance of Microsoft Copilot.
   * Date: 2025-08-11
   * License: MIT License]
   * 
-  * Explanation:
   * This assumes pollEvents() returns something iterable like std::vector<ButtonEvent> or similar.
   * If ButtonEventType is a scoped enum (enum class), you’ll need to qualify it like ButtonEventType::Pressed.
   * You can expand this to trigger actions — e.g., toggling LEDs, sending MIDI messages, etc.
