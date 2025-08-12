@@ -80,15 +80,18 @@ void setup() {
   pad->setLogicType(ACTIVE_HIGH);  // Configure logic type via method
   bool isConnected = pad->isConnected();
   uint16_t pAddress = pad->getAddress();
+  static constexpr const char* txts[] PROGMEM = {"not ", "connected"};
+  Serial.print(F("Pad is "));
   if (isConnected) {  
     padLogic[0].address = pAddress;
     padLogic[0].use_qwstpad = true;
-	  Serial.println(F("is connected"));
+	  Serial.println(txts[1]);
     Serial.print(F("Address: 0x"));
     Serial.println(pAddress, HEX);
   	NUM_PADS++;
   } else {
-    Serial.println(F("is not connected"));
+    Serial.print(txts[0]);
+    Serial.println(txts[1]);
     padLogic[0].address = 0;
     padLogic[0].use_qwstpad = false;
   }
@@ -121,5 +124,7 @@ void loop() {
         Serial.println(event.type == PRESSED ? "PRESSED" : "RELEASED");
       }
     }
+    //if (btnPressed)
+    //  delay(3000);  // Give user time to view the results
   }
 }
