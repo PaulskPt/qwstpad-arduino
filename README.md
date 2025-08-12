@@ -193,6 +193,7 @@ Pad 2, button state changed for: 'PLUS', button: RELEASED
 Pad 2, button state changed for: 'X', button: PRESSED
 blink_a_led(): Pad 2, blinking one LED for button: 'X'
 Pad 2, button state changed for: 'X', button: RELEASED
+
 Alternative output:
 
 Current button states:
