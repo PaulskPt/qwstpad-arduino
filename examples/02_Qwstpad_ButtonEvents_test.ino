@@ -1,5 +1,5 @@
 /* 
-  * Feather_ESP32-S3_TFT_Qwstpad_ButtonEvents_test.ino
+  * 02_Qwstpad_ButtonEvents_test.ino
   *
   * Example of howto work with Button Events
   * Created by Paulus Schulinck (Github handle: @PaulskPt),
