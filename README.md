@@ -158,7 +158,7 @@ key: the button identifier (e.g. "U", "M")
 type: either PRESSED or RELEASED
 
 ## 🧪 Example 2 output
-
+```
 QwstPad ButtonEvent test
 ✅ Found MAX17048 with Chip ID: 0xC
 is connected
@@ -167,7 +167,7 @@ Button: U - PRESSED
 Button: U - RELEASED
 Button: M - PRESSED
 Button: M - RELEASED
-
+```
 This sketch is ideal for building interactive applications — from gamepads to control panels — where reacting to button events is more useful than polling raw states.
 
 
