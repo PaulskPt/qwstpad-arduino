@@ -180,12 +180,12 @@ Current button states:
 A: 0, B: 0, D: 0, L: 0, M: 1, P: 0, R: 0, U: 0, X: 0, Y: 0, 
 Previous button states:
 A: 0, B: 0, D: 0, L: 0, M: 0, P: 0, R: 0, U: 0, X: 0, Y: 0, 
-Button: M - PRESSED
+Button state changed for: 'MINUS', button: PRESSED
 Current button states:
 A: 0, B: 0, D: 0, L: 0, M: 0, P: 0, R: 0, U: 0, X: 0, Y: 0, 
 Previous button states:
 A: 0, B: 0, D: 0, L: 0, M: 1, P: 0, R: 0, U: 0, X: 0, Y: 0, 
-Button: M - RELEASED
+Button state changed for: 'MINUS', button: RELEASED
 
 Note: if you want this alternative output uncomment lines 111, 127 and 128.
 
