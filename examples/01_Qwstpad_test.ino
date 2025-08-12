@@ -4,7 +4,8 @@
   * This sketch is designed to test the QwstPad functionality with the Feather ESP32-S3 TFT.
   * It initializes the QwstPad, reads button states, and manages LED states.
   * 
-  * Created by Paulus Schulinck (Github handle: @PaulskPt).
+  * Created by Paulus Schulinck (Github handle: @PaulskPt),
+  * with assistance of Microsoft Copilot.
   * Date: 2025-08-10
   * License: MIT License]
   * 
