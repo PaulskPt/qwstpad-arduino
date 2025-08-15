@@ -193,8 +193,8 @@ void setup() {
   
   Wire.begin();
 
-  pads[0] = new QwstPad(DEFAULT_I2C_PORT, 0x21); // DEFAULT_ADDRESS);
-  pads[1] = new QwstPad(DEFAULT_I2C_PORT, 0x23); // ALT_ADDRESS_1);
+  pads[0] = new QwstPad(DEFAULT_I2C_PORT, 0x21, true); // DEFAULT_ADDRESS);
+  pads[1] = new QwstPad(DEFAULT_I2C_PORT, 0x23, true); // ALT_ADDRESS_1);
   //pads[2] = new QwstPad(DEFAULT_I2C_PORT, ALT_ADDRESS_2);
   //pads[3] = new QwstPad(DEFAULT_I2C_PORT, ALT_ADDRESS_3);
 
