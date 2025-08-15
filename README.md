@@ -178,7 +178,7 @@ QwstPad ButtonEvent test
 ✅ Adafruit Feather ESP32-S3 TFT detected
 ✅ Found MAX17048 with Chip ID: 0xC
 Default I2C port (Wire) I2C scan: 0x23, 0x36, 0x51, 0x6A, 0x76, 
-Secondary port (Wire1) I2C scan: 0x21, 0x23, 
+Secondary I2C port (Wire1) I2C scan: 0x21, 0x23, 
 Initializing BME280...
 BME280 initialized successfully.
 QwstPad::init(): Initialized pad with __padID: 0 at address: 0x21
