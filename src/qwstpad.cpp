@@ -21,6 +21,7 @@
 #include <algorithm>  // for std::find
 #include <cstdarg>    // for va_list, va_start, va_end
 #include <iostream>   // same
+#include <cstdio>
 
 bool padInitialized = false;  // Flag to indicate if the pad is initialized
 
@@ -221,10 +222,12 @@ bool QwstPad::IsInitialized() const {
 
 // Default version for most use cases (160-byte buffer)
 void QwstPad::serialPrintf(const char* format, ...) const {
+    char buf[160];
     va_list args;
     va_start(args, format);
-    Serial.vprintf(format, args);
+    vsnprintf(buf, sizeof(buf), format, args);
     va_end(args);
+    Serial.print(buf);
 }
 
 void QwstPad::printBinary(uint16_t num, bool fancy = false) const {
@@ -264,11 +267,11 @@ bool QwstPad::isConnected() {
     return Wire.endTransmission() == 0;  // 0 = success, device responded
 }
 
-uint16_t QwstPad::getAddress() const {
+uint8_t QwstPad::getAddress() const {
     return this->__address;
 }
 
-int QwstPad::getpadIDFromAddress(uint8_t address) {
+uint8_t QwstPad::getpadIDFromAddress(uint8_t address) {
     switch (address) {
         case 0x21: return 0;
         case 0x23: return 1;
@@ -307,7 +310,7 @@ void QwstPad::pr_PadID() const {
 }
 
 // getButtonBitfield() → normal bitfield
-uint32_t QwstPad::getButtonBitfield(bool fancy = false) {
+uint16_t QwstPad::getButtonBitfield(bool fancy = false) {
     static constexpr const char txt0[] PROGMEM = "QwstPad::getButtonBitfield(): ";
     // Apply inversion internally based on config
     //bool invert = (__config->logic == ACTIVE_LOW);

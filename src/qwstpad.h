@@ -130,12 +130,12 @@ public:
     bool isValidAddress(uint8_t addr);
     void clear_button_states();
     bool isConnected();
-    uint16_t getAddress() const;
-    int getpadIDFromAddress(uint8_t address);
+    uint8_t getAddress() const;
+    uint8_t getpadIDFromAddress(uint8_t address);
     uint16_t address_code() const;
     std::map<std::string, bool> read_buttons();
     void pr_PadID() const;
-    uint32_t getButtonBitfield(bool fancy);
+    uint16_t getButtonBitfield(bool fancy);
     int8_t getFirstPressedButtonBitIndex();
     std::string getFirstPressedButtonName();
     int8_t getLogicType();
