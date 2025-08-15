@@ -145,6 +145,8 @@ This sketch demonstrates how to use the QwstPad class to detect and handle butto
 
 🔧 Key Features:
 
+Connect both QwstPad's to a SECONDARY_I2C_PORT (Wire1) (SDA1 = GPIO10, SCL1 = GPIO11).
+
 Initializes the QwstPad and configures it for ACTIVE_HIGH logic.
 
 Uses pads[i]->update() to refresh internal button states of each pad.
@@ -280,8 +282,8 @@ Note: if you are going to use two (like in this repo), three or (maximum) four P
 Then in the sketch of example 1, function setup(), uncomment the following line(s):
 ```
   In example 1:
-  294  //pads[2] = new QwstPad(DEFAULT_I2C_PORT, ALT_ADDRESS_2);
-  295  //pads[3] = new QwstPad(DEFAULT_I2C_PORT, ALT_ADDRESS_3);
+  294  //pads[2] = new QwstPad(DEFAULT_I2C_PORT, ALT_ADDRESS_2, true);
+  295  //pads[3] = new QwstPad(DEFAULT_I2C_PORT, ALT_ADDRESS_3, true);
 
 Note that example 2 uses only one QwstPad controller.
 ```
