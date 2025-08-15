@@ -42,6 +42,10 @@ const char __version__[] = "0.0.1";
 #define DEFAULT_I2C_PORT &Wire
 #endif
 
+#ifndef SECONDARY_I2C_PORT
+#define SECONDARY_I2C_PORT &Wire1
+#endif
+
 // Constants
 const uint8_t MAX_PADS = 4; // Maximum number of pads supported
 const uint8_t NUM_LEDS = 4;
@@ -121,9 +125,9 @@ struct ButtonDescriptor {
 class QwstPad {
 public:
     //QwstPad(); // default constructor
-    explicit QwstPad(uint8_t address);                      // Uses default Wire
-    QwstPad(TwoWire* i2c_port, uint8_t address);            // Custom Wire port
-    void init(TwoWire* i2c_port = DEFAULT_I2C_PORT, uint8_t address = DEFAULT_ADDRESS);
+    explicit QwstPad(uint8_t address);      // Uses default Wire
+    QwstPad(TwoWire* i2c_port, uint8_t address, bool show_address); // Custom Wire port
+    void init(TwoWire* i2c_port, uint8_t address, bool show_address);
     void deinit();
     void begin();
     bool IsInitialized() const; // Check if the pad is initialized
@@ -134,8 +138,10 @@ public:
     uint8_t getpadIDFromAddress(uint8_t address);
     uint16_t address_code() const;
     std::map<std::string, bool> read_buttons();
+    std::map<std::string, bool> read_buttons2();
     void pr_PadID() const;
-    uint16_t getButtonBitfield(bool fancy);
+    void printAllPadConfigs() const;
+    uint16_t getButtonBitfield(bool show, bool fancy);
     int8_t getFirstPressedButtonBitIndex();
     std::string getFirstPressedButtonName();
     int8_t getLogicType();
@@ -144,6 +150,7 @@ public:
     uintptr_t debugConfigPointer() const;
     bool debugPrintStates() const;
     void update();
+    bool readRawPin(int index);
 
     const std::map<std::string, bool>& getCurrentStates() const {
       return __button_states;
@@ -153,6 +160,7 @@ public:
       return __last_button_states;
     }
 
+    bool isButtonPressed(const std::string& key);
     bool wasPressed(const std::string& key) const;
     bool wasReleased(const std::string& key) const;
     bool buttonChanged(const std::string& key);
@@ -167,7 +175,7 @@ private:
     TwoWire* __i2c;
     uint8_t __address;
     uint8_t __led_states;
-    int     __padID;
+    uint8_t __padID;
 
     std::map<std::string, bool> __button_states;
     std::map<std::string, bool> __last_button_states;
