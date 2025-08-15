@@ -189,11 +189,6 @@ Pad 2, I2C address: 0x23, padID: 1. Pad is connected
 Number of connected pads: 2
 setup(): Pad 1, use_qwstpad = true
 setup(): Pad 2, use_qwstpad = true
-Pad 1, I2C address: 0x21, padID: 0. Pad is connected
-Pad 2, I2C address: 0x23, padID: 1. Pad is connected
-Number of connected pads: 2
-setup(): Pad 1, use_qwstpad = true
-setup(): Pad 2, use_qwstpad = true
 📦 Pad Configurations:
 Pad ID: 0
   Logic Type: ACTIVE_HIGH
