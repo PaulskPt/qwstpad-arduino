@@ -526,8 +526,7 @@ void setup() {
     Serial.println(max_bat.getChipID(), HEX);
   }
 
-  #if defined(DEFAULT_I2C_PORT)
-  
+#if defined(DEFAULT_I2C_PORT)
   Serial.print("Default I2C port (Wire) ");
   TB.theWire = DEFAULT_I2C_PORT;
   TB.printI2CBusScan();
