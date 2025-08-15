@@ -173,26 +173,64 @@ type: either PRESSED or RELEASED
 ## 🧪 Example 2 output
 
 ```
+
 QwstPad ButtonEvent test
+✅ Adafruit Feather ESP32-S3 TFT detected
 ✅ Found MAX17048 with Chip ID: 0xC
-QwstPad::init(): Pad 1
-QwstPad::init(): Pad 2
+Default I2C port (Wire) I2C scan: 0x23, 0x36, 0x51, 0x6A, 0x76, 
+Secondary port (Wire1) I2C scan: 0x21, 0x23, 
+Initializing BME280...
+BME280 initialized successfully.
+QwstPad::init(): Initialized pad with __padID: 0 at address: 0x21
+QwstPad::init(): Initialized pad with __padID: 1 at address: 0x23
 Maximum number of QwSTPads: 2
-Pad 1, I2C address: 0x21, is connected
-Pad 2, I2C address: 0x23, is connected
+Pad 1, I2C address: 0x21, padID: 0. Pad is connected
+Pad 2, I2C address: 0x23, padID: 1. Pad is connected
 Number of connected pads: 2
-Pad 1, button state changed for: 'Y', button: PRESSED
-blink_a_led(): Pad 1, blinking one LED for button: 'Y'
-Pad 1, button state changed for: 'Y', button: RELEASED
-Pad 1, button state changed for: 'LEFT', button: PRESSED
-blink_a_led(): Pad 1, blinking one LED for button: 'LEFT'
-Pad 1, button state changed for: 'LEFT', button: RELEASED
-Pad 2, button state changed for: 'PLUS', button: PRESSED
-blink_a_led(): Pad 2, blinking one LED for button: 'PLUS'
-Pad 2, button state changed for: 'PLUS', button: RELEASED
-Pad 2, button state changed for: 'X', button: PRESSED
-blink_a_led(): Pad 2, blinking one LED for button: 'X'
-Pad 2, button state changed for: 'X', button: RELEASED
+setup(): Pad 1, use_qwstpad = true
+setup(): Pad 2, use_qwstpad = true
+Pad 1, I2C address: 0x21, padID: 0. Pad is connected
+Pad 2, I2C address: 0x23, padID: 1. Pad is connected
+Number of connected pads: 2
+setup(): Pad 1, use_qwstpad = true
+setup(): Pad 2, use_qwstpad = true
+📦 Pad Configurations:
+Pad ID: 0
+  Logic Type: ACTIVE_HIGH
+  Button Pins: 'A' → 14  'B' → 12  'D' → 4  'L' → 2  'M' → 5  'P' → 11  'R' → 3  'U' → 1  'X' → 15  'Y' → 13  
+---------------------------
+Pad ID: 1
+  Logic Type: ACTIVE_HIGH
+  Button Pins: 'A' → 14  'B' → 12  'D' → 4  'L' → 2  'M' → 5  'P' → 11  'R' → 3  'U' → 1  'X' → 15  'Y' → 13  
+---------------------------
+Pad ID: 2
+  Logic Type: ACTIVE_HIGH
+  Button Pins: (none)
+---------------------------
+Pad ID: 3
+  Logic Type: ACTIVE_HIGH
+  Button Pins: (none)
+---------------------------
+read_bme280_data(): Temp: 31.12 °C, Pressure: 1006.14 mBar, Altitude: 84.35 m, Humidity: 39.91 %
+ckForButtonPress(): Pad 1, btnChanged = true
+ckForButtonPress(): Pad 1, button state changed for: 'UP', button: PRESSED
+ckForButtonPress(): Pad 1, btn_idx = 1
+ckForButtonPress(): going to call blink_a_led() ...
+blink_a_led(): Pad 1, LED index: 1, blinking one LED for button: 'UP'
+ckForButtonPress(): Button: 1 = 'UP', pressed at time: 1319645
+loop(): a button has been pressed
+ckForButtonPress(): Pad 1, btnChanged = true
+ckForButtonPress(): Pad 1, button state changed for: 'UP', button: RELEASED
+ckForButtonPress(): Pad 2, btnChanged = true
+ckForButtonPress(): Pad 2, button state changed for: 'DOWN', button: PRESSED
+ckForButtonPress(): Pad 2, btn_idx = 4
+ckForButtonPress(): going to call blink_a_led() ...
+blink_a_led(): Pad 2, LED index: 4, blinking one LED for button: 'DOWN'
+ckForButtonPress(): Button: 4 = 'DOWN', pressed at time: 1322164
+loop(): a button has been pressed
+read_bme280_data(): Temp: 31.92 °C, Pressure: 1006.24 mBar, Altitude: 83.49 m, Humidity: 40.12 %
+ckForButtonPress(): Pad 2, btnChanged = true
+ckForButtonPress(): Pad 2, button state changed for: 'DOWN', button: RELEASED
 
 Alternative output:
 
