@@ -135,10 +135,12 @@ void blink_a_led(padBtn &padLogic, bool all_leds = false) {
   uint8_t state = padLogic.currentButtonState;
   std::string key = padLogic.key;
 #endif
-  //for (const auto& [key, state] : currentStates) {
+
+#ifdef USE_CURRENT_STATES
+  for (const auto& [key, state] : currentStates) {
+#endif
     std::string key_mod = keyAliases.count(key) ? keyAliases[key] : key;
 
-    //if (!pads[pad_idx]->wasPressed(key)) {
     if (key.empty()) {
       Serial.print(txt0);
       Serial.print(F("no key was pressed. Returning..."));
@@ -183,7 +185,9 @@ void blink_a_led(padBtn &padLogic, bool all_leds = false) {
       delay(500);
       pads[pad_idx]->clear_leds();
     }
-  //}
+#ifdef USE_CURRENT_STATES
+  }
+#endif
 
   // If no button was pressed and all_leds is true, blink all
   if (all_leds) {
