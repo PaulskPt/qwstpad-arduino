@@ -537,31 +537,10 @@ void setup() {
 
   Wire.setClock(100000); // Optional: slow down I2C
 
-  /*
-  Serial.println("Scanning I2C bus...");
-  for (byte addr = 1; addr < 127; addr++) {
-    Wire.beginTransmission(addr);
-    if (Wire.endTransmission() == 0) {
-      Serial.print("Found device at 0x");
-      Serial.println(addr, HEX);
-    }
-  }
-  */
-
-  /*
-  I2C_1.begin(10, 11, 100000); // SDA = GPIO10, SCL = GPIO11
-  for (byte addr = 1; addr < 127; addr++) {
-    I2C_1.beginTransmission(addr);
-    if (I2C_1.endTransmission() == 0) {
-      Serial.print("Found device at 0x");
-      Serial.println(addr, HEX);
-    }
-  }
-*/
 
 #if defined(SECONDARY_I2C_PORT)
   //Wire1.begin(SDA1, SCL1, 100000);
-  Serial.print("Secondary port (Wire1) ");
+  Serial.print("Secondary I2C port (Wire1) ");
   TB.theWire = SECONDARY_I2C_PORT;
   TB.theWire->setPins(SDA1, SCL1);
   TB.printI2CBusScan();
