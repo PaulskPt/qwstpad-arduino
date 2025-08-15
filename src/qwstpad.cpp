@@ -314,7 +314,7 @@ uint16_t QwstPad::getButtonBitfield(bool fancy = false) {
     static constexpr const char txt0[] PROGMEM = "QwstPad::getButtonBitfield(): ";
     // Apply inversion internally based on config
     //bool invert = (__config->logic == ACTIVE_LOW);
-    uin16_t result = 0;
+    uint16_t result = 0;
     bool pressed = false;
  
 #ifdef MY_DEBUG
