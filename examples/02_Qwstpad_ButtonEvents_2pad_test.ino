@@ -113,8 +113,13 @@ void blink_a_led(padBtn &padLogic, bool all_leds = false) {
   static constexpr const char txt0[] PROGMEM = "blink_a_led(): ";
   uint8_t pad_idx = padLogic.padID;
 
+#ifdef USE_CURRENT_STATES
+#undef USE_CURRENT_STATES
+#endif
+
+#ifdef USE_CURRENT_STATES
   // Iterate over all current button states
-  //const auto& currentStates = pads[pad_idx]->getCurrentStates();
+  const auto& currentStates = pads[pad_idx]->getCurrentStates();
 
 #ifdef MY_DEBUG
   Serial.print(txt0);
@@ -126,9 +131,10 @@ void blink_a_led(padBtn &padLogic, bool all_leds = false) {
   }
   Serial.println();
 #endif
+#else
   uint8_t state = padLogic.currentButtonState;
   std::string key = padLogic.key;
-
+#endif
   //for (const auto& [key, state] : currentStates) {
     std::string key_mod = keyAliases.count(key) ? keyAliases[key] : key;
 
