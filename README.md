@@ -172,6 +172,8 @@ key: the button identifier (e.g. "UP", "MINUS")
 
 type: either PRESSED or RELEASED
 
+When a button has pressed one of the four LEDs will be blink.
+
 ## 🧪 Example 2 output
 
 ```
