@@ -279,7 +279,7 @@ Note: if you are going to use two (like in this repo), three or (maximum) four P
   50 #define CURRENT_MAX_PADS 2
 
   In example 2:
-  43 #define CURRENT_MAX_PADS 1
+  104 #define CURRENT_MAX_PADS 2
 ```
 Then in the sketch of example 1, function setup(), uncomment the following line(s):
 ```
@@ -287,5 +287,7 @@ Then in the sketch of example 1, function setup(), uncomment the following line(
   294  //pads[2] = new QwstPad(DEFAULT_I2C_PORT, ALT_ADDRESS_2, true);
   295  //pads[3] = new QwstPad(DEFAULT_I2C_PORT, ALT_ADDRESS_3, true);
 
-Note that example 2 uses only one QwstPad controller.
+  In example 2:
+  568 pads[0] = new QwstPad(SECONDARY_I2C_PORT, DEFAULT_ADDRESS, true);
+  569 pads[1] = new QwstPad(SECONDARY_I2C_PORT, ALT_ADDRESS_1, true);
 ```
