@@ -515,7 +515,7 @@ void setup() {
   Serial.begin(115200);
   while (!Serial) delay(10);
 
-  Serial.println(F("QwstPad ButtonEvent test"));
+  Serial.println(F("QwstPad ButtonEvent 2 QwstPad test"));
 
   // turn on the TFT / I2C power supply
 #if defined(ARDUINO_ADAFRUIT_FEATHER_ESP32S3_TFT)
