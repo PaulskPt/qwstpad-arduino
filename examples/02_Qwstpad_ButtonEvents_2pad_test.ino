@@ -565,8 +565,8 @@ void setup() {
   }
 #endif
 
-  pads[0] = new QwstPad(SECONDARY_I2C_PORT, 0x21, true); // DEFAULT_ADDRESS);
-  pads[1] = new QwstPad(SECONDARY_I2C_PORT, 0x23, true); // ALT_ADDRESS_1);
+  pads[0] = new QwstPad(SECONDARY_I2C_PORT, DEFAULT_ADDRESS, true);
+  pads[1] = new QwstPad(SECONDARY_I2C_PORT, ALT_ADDRESS_1, true);
   //pads[0] = new QwstPad(DEFAULT_I2C_PORT, 0x21, true); // DEFAULT_ADDRESS);
   //pads[1] = new QwstPad(DEFAULT_I2C_PORT, 0x23, true); // ALT_ADDRESS_1);
   //pads[2] = new QwstPad(DEFAULT_I2C_PORT, ALT_ADDRESS_2, true);
