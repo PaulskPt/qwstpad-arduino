@@ -274,10 +274,6 @@ bool ckForButtonPress() {
 #ifdef MY_DEBUG
     printPadDiagnostics(i);
 #endif
-    //while (Serial.available() == 0) {
-      // Wait for user input
-    //}
-    //Serial.read(); // Clear the input
 
 #ifdef MY_DEBUG
     Serial.print(txt0);

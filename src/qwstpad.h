@@ -38,6 +38,12 @@ const char __version__[] = "0.0.1";
 #undef MY_DEBUG 
 #endif 
 
+/*
+#ifndef MY_DEBUG
+#define MY_DEBUG 
+#endif 
+*/
+
 #ifndef DEFAULT_I2C_PORT
 #define DEFAULT_I2C_PORT &Wire
 #endif
