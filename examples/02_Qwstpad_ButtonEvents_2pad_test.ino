@@ -284,7 +284,7 @@ bool ckForButtonPress() {
         key = event.key;
         key_mod = keyAliases.count(key) ? keyAliases[key] : key;
         btnChanged = pads[i]->buttonChanged(key);
-#ifndef MY_DEBUG
+#ifdef MY_DEBUG
         Serial.print(txt0);
         pads[i]->pr_PadID();
         Serial.print(F(", btnChanged = "));
@@ -302,7 +302,7 @@ bool ckForButtonPress() {
           if (event.type == PRESSED) {
             unsigned long currentTime = millis();
             int8_t btn_idx = pads[i]->getFirstPressedButtonBitIndex();
-#ifndef MY_DEBUG
+#ifdef MY_DEBUG
             Serial.print(txt0);
             pads[i]->pr_PadID();
             Serial.print(F(", btn_idx = "));
@@ -314,23 +314,25 @@ bool ckForButtonPress() {
                 retval = true;
                 padLogic[i].key = key;
                 padLogic[i].btn_idx = btn_idx;
-                uint16_t buttons_tmp = pads[i]->getButtonBitfield(true, false);
+                uint16_t buttons_tmp = pads[i]->getButtonBitfield(false, false);
+#ifdef MY_DEBUG
                 Serial.print(txt0);
                 Serial.print(F("buttons rcvd fm getButtonBitfield: "));
                 printBitfield(buttons_tmp);
                 Serial.println();
+#endif
                 padLogic[i].buttons = buttons_tmp;
-                //padLogic[i].buttons = pads[i]->getButtonBitfield(true, false); // do not buttons, example: 01000 00000 00000
+                //padLogic[i].buttons = pads[i]->getButtonBitfield(false, false); // do not buttons, example: 01000 00000 00000
                 padLogic[i].buttonPressed = true;
                 padLogic[i].lastDebounceTime = currentTime;
                 padLogic[i].lastButtonState = padLogic[i].currentButtonState; // store the "old" currentButtonState
                 padLogic[i].currentButtonState = true; // set the currentButtonState
-#ifndef MY_DEBUG
+#ifdef MY_DEBUG
                 Serial.print(txt0);
                 Serial.println(F("going to call blink_a_led() ..."));
                 blink_a_led(padLogic[i], false); // Blink an individual LED
 #endif
-#ifndef MY_DEBUG
+#ifdef MY_DEBUG
                 Serial.print(F("ckForButtonPress(): Button: "));
                 Serial.print(btn_idx);
                 Serial.print(F(" = \'"));
@@ -723,9 +725,11 @@ void loop() {
     }
 
     if (ckForButtonPress()) {
+#ifdef MY_DEBUG
       Serial.print(txt0);
       Serial.println(F("a button has been pressed"));
-#ifndef MY_DEBUG
+#endif
+#ifdef MY_DEBUG
       for (uint8_t i = 0; i < NUM_PADS; i++) {
         show_pad_stru(i);
       }
