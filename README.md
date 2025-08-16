@@ -290,6 +290,10 @@ Then in the sketch of example 1, function setup(), uncomment the following line(
   295  //pads[3] = new QwstPad(DEFAULT_I2C_PORT, ALT_ADDRESS_3, true);
 
   In example 2:
-  568 pads[0] = new QwstPad(SECONDARY_I2C_PORT, DEFAULT_ADDRESS, true);
-  569 pads[1] = new QwstPad(SECONDARY_I2C_PORT, ALT_ADDRESS_1, true);
+  566 //pads[2] = new QwstPad(SECONDARY_I2C_PORT, ALT_ADDRESS_2, true);
+  567 //pads[3] = new QwstPad(SECONDARY_I2C_PORT, ALT_ADDRESS_3, true);
+
+  Note that in Example 2 the current I2C Port for pads 0 and 1 is defined as followw:
+  564 pads[0] = new QwstPad(SECONDARY_I2C_PORT, DEFAULT_ADDRESS, true);
+  565 pads[1] = new QwstPad(SECONDARY_I2C_PORT, ALT_ADDRESS_1, true);
 ```
