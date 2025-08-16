@@ -669,44 +669,5 @@ void loop() {
       Serial.print(txt0);
       Serial.println(F("a button has been pressed"));
     }
-/*
-    for (uint8_t i = 0; i < NUM_PADS; i++) {
-      if (padLogic[i].use_qwstpad) {
-
-        pads[i]->update();
-
-        std::vector<ButtonEvent> keyEvent = pads[i]->pollEvents();
-        
-        size_t EventSz = keyEvent.size();
- 
-        if (EventSz > 0) {
-#ifndef MY_DEBUG
-          Serial.print(txt0);
-          pads[i]->pr_PadID();
-          Serial.print(F(", event count: "));
-          Serial.println(EventSz);
-#endif
-          for (const ButtonEvent& event : keyEvent) {
-            std::string key = event.key;
-            std::string key_mod = keyAliases.count(key) ? keyAliases[key] : key;
-            if (pads[i]->buttonChanged(key)) {
-              pads[i]->pr_PadID();
-              Serial.print(", button state changed for: '");
-              Serial.print(key_mod.c_str());
-              Serial.print("', button: ");
-              Serial.println(event.type == PRESSED ? "PRESSED" : "RELEASED");
-              if (event.type == PRESSED) {
-                blink_a_led(padLogic[i], false); // Blink an individual LED
-              }
-
-            }
-          }
-        }
-        //if (btnPressed)
-        //  delay(3000);  // Give user time to view the results
-      }
-
-    }
-*/
   }
 }
