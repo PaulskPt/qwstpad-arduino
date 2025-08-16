@@ -369,7 +369,6 @@ void QwstPad::printAllPadConfigs() const {
   }
 }
 
-
 // getButtonBitfield() → normal bitfield
 uint16_t QwstPad::getButtonBitfield(bool show, bool fancy = false) {
     static constexpr const char txt0[] PROGMEM = "QwstPad::getButtonBitfield(): ";
@@ -390,7 +389,7 @@ uint16_t QwstPad::getButtonBitfield(bool show, bool fancy = false) {
     // Note: read_buttons calls update() internally!
     // and update() already takes care of the logic inversion
     // based on the pad's logic type (ACTIVE_LOW or ACTIVE_HIGH)
-    __btn_states = read_buttons();  // local variable to hold button states
+    __btn_states = read_buttons2();  // local variable to hold button states
 #ifdef MY_DEBUG
     Serial.print(txt0);
     pr_PadID();
@@ -430,9 +429,9 @@ uint16_t QwstPad::getButtonBitfield(bool show, bool fancy = false) {
     if (result > 0) {
         if (show) {
             static constexpr const char bf[] PROGMEM = "bitfield";
-            static constexpr const char hdg[] PROGMEM =      "  | PadL  | LEDs  | PadR  |";
-            static constexpr const char bits_hdg[] PROGMEM = "  |b15~b11|b10~b6 | b5~b0 |";
             if (fancy) {
+                static constexpr const char hdg[] PROGMEM =      "  | PadL  | LEDs  | PadR  |";
+                static constexpr const char bits_hdg[] PROGMEM = "  |b15~b11|b10~b6 | b5~b0 |";
                 //Serial.println(txt0);
                 pr_dashBar();
                 Serial.println(hdg);
