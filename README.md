@@ -126,9 +126,9 @@ and in:
 
 This example sketch also makes use of new internal features added to the QwstPad class:
 
-QwstPad::debugPrintStates() — prints the current button states for debugging. To use this feature: uncomment line:
+QwstPad::debugPrintStates() — prints the current button states for debugging.
 ```
-    282 // bool btnPressed = pad->debugPrintStates();
+  266 // bool btnPressed = pads[i]->debugPrintStates();
 ```
 
 getCurrentStates() and getPreviousStates() — expose internal state maps for advanced use.
@@ -142,6 +142,7 @@ These additions support more flexible debugging and custom logic for advanced ap
 🧪 Example: Feather_ESP32-S3_TFT_Qwstpad_ButtonEvents_test.ino
 
 This sketch demonstrates how to use the QwstPad class to detect and handle button events (presses and releases) on a Feather ESP32-S3 with a QwstPad connected via I²C.
+In the most recent version of this test I connected four external I²C devices: the two QwstPad game controllers, one Pimoroni multi-sensor-stick and a M5Stack Unit-RTC. It revealed that this was too much for one I²C bus (note that the Feather ESP32-S3 TFT also use a battery gauge and a temperature sensor that also use the I²C bus). I successfully connected the four external I²C devices to two I²C buses. The two I²C game controllers I connected to a second I²C bus.
 
 🔧 Key Features:
 
