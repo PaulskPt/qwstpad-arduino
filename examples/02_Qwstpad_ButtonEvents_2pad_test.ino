@@ -563,10 +563,8 @@ void setup() {
 
   pads[0] = new QwstPad(SECONDARY_I2C_PORT, DEFAULT_ADDRESS, true);
   pads[1] = new QwstPad(SECONDARY_I2C_PORT, ALT_ADDRESS_1, true);
-  //pads[0] = new QwstPad(DEFAULT_I2C_PORT, 0x21, true); // DEFAULT_ADDRESS);
-  //pads[1] = new QwstPad(DEFAULT_I2C_PORT, 0x23, true); // ALT_ADDRESS_1);
-  //pads[2] = new QwstPad(DEFAULT_I2C_PORT, ALT_ADDRESS_2, true);
-  //pads[3] = new QwstPad(DEFAULT_I2C_PORT, ALT_ADDRESS_3, true);
+  //pads[2] = new QwstPad(SECONDARY_I2C_PORT, ALT_ADDRESS_2, true);
+  //pads[3] = new QwstPad(SECONDARY_I2C_PORT, ALT_ADDRESS_3, true);
 
   uint8_t pad1address;
   Serial.print(F("Maximum number of QwSTPads: "));
