@@ -271,8 +271,9 @@ Special thanks to the original QwstPad project and the Pimoroni and Adafruit com
 
 - Adafruit Feather ESP32-S3 TFT [info](https://www.adafruit.com/product/5483?srsltid=AfmBOoqu3pTaP28ehaMM7YCZ2IrkUCpeSIhgyfL7kuX6tprso31CxoPy)
   also available through [Pimoroni](https://shop.pimoroni.com/products/adafruit-esp32-s3-tft-feather-4mb-flash-2mb-psram-stemma-qt?variant=40032190857299)
-- Pimoroni Qw/ST Pad (I2C Game Controller) [info](https://shop.pimoroni.com/products/qwst-pad?variant=53514400596347)
+- 1 x (or 2x) Pimoroni Qw/ST Pad (I2C Game Controller) [info](https://shop.pimoroni.com/products/qwst-pad?variant=53514400596347)
 - 2 x 4 Pin JST-SH Cable (Qwiic, STEMMA QT, Qw/ST 200mm) [info](https://shop.pimoroni.com/products/jst-sh-cable-qwiic-stemma-qt-compatible?variant=31910609813587)
+- eventually: 1 x JST-SH to DuPont Pins (CAB1004)   [info](https://shop.pimoroni.com/products/jst-sh-cable-qwiic-stemma-qt-compatible?variant=31910609846355)
 
 Note: if you are going to use two (like in this repo), three or (maximum) four Pimoroni QwstPad boards, you need to cut copper bridges on the back of the board as indicated on that side of the board, to give each board its unique I2C address. Then, in the sketch of example 1, line 50, change the maximum number of QwstPad's used accordingly:
 ```
