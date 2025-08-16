@@ -126,9 +126,9 @@ and in:
 
 This example sketch also makes use of new internal features added to the QwstPad class:
 
-QwstPad::debugPrintStates() — prints the current button states for debugging. To use this feature: uncomment line:
+QwstPad::debugPrintStates() — prints the current button states for debugging.
 ```
-    282 // bool btnPressed = pad->debugPrintStates();
+  266 // bool btnPressed = pads[i]->debugPrintStates();
 ```
 
 getCurrentStates() and getPreviousStates() — expose internal state maps for advanced use.
