@@ -57,21 +57,16 @@ uint8_t NUM_PADS = 0;
 struct padBtn {
   uint8_t padID = 0; // Unique identifier for the pad
   bool use_qwstpad = false;
-  uint16_t address = 0;
-  uint32_t buttons = 0;
+  uint8_t address = 0;
+  int8_t logic = -1; // set to -1 if not set
+  uint16_t buttons = 0;
+  uint16_t buttons_old = 0;
   std::string key = "";
   int8_t btn_idx = -1;
-  uint16_t buttons_old = 0;
-  int8_t logic = -1; // set to -1 if not set
-  //bool a_button_has_been_pressed = false;
   bool buttonPressed = false;
   bool lastButtonState = false;
   bool currentButtonState = false;
   unsigned long lastDebounceTime = 0;
-  //bool buttonPressed[NUM_BUTTONS] = {false};
-  //bool lastButtonState[NUM_BUTTONS] = {false};
-  //bool currentButtonState[NUM_BUTTONS] = {false};
-  //unsigned long lastDebounceTime[NUM_BUTTONS] = {0};
 };
 
 const unsigned long debounceDelay = 500; // ms
@@ -319,7 +314,13 @@ bool ckForButtonPress() {
                 retval = true;
                 padLogic[i].key = key;
                 padLogic[i].btn_idx = btn_idx;
-                padLogic[i].buttons = pads[i]->getButtonBitfield(false, false); // do not buttons, example: 01000 00000 00000
+                uint16_t buttons_tmp = pads[i]->getButtonBitfield(true, false);
+                Serial.print(txt0);
+                Serial.print(F("buttons rcvd fm getButtonBitfield: "));
+                printBitfield(buttons_tmp);
+                Serial.println();
+                padLogic[i].buttons = buttons_tmp;
+                //padLogic[i].buttons = pads[i]->getButtonBitfield(true, false); // do not buttons, example: 01000 00000 00000
                 padLogic[i].buttonPressed = true;
                 padLogic[i].lastDebounceTime = currentTime;
                 padLogic[i].lastButtonState = padLogic[i].currentButtonState; // store the "old" currentButtonState
@@ -375,42 +376,101 @@ void clr_pad_stru(uint8_t PadNr) {
   }
 }
 
+// Helper function for show_pad_stru() and ckForbuttonPress()
+void printBitfield(uint16_t value) {
+  Serial.print(F("0b"));
+  for (int i = 15; i >= 1; i--) {  // Skip bit 0
+    Serial.print((value >> i) & 1);
+    if (i == 12 || i == 6) Serial.print(" ");  // Grouping: [15–12] [11–6] [5–1]
+  }
+}
+
+const __FlashStringHelper* padLabels[] = {
+  F("padID:              "),
+  F("use_qwstpad:        "),
+  F("address:            0x"),
+  F("logic:              "),
+  F("buttons:            "),
+  F("buttons_old:        "),
+  F("key:                \""),
+  F("btn_idx:            "),
+  F("buttonPressed:      "),
+  F("lastButtonState:    "),
+  F("currentButtonState: "),
+  F("lastDebounceTime:   ")
+};
+
 void show_pad_stru(uint8_t PadNr) {
   if (PadNr >= 0 && PadNr < CURRENT_MAX_PADS) {
-    Serial.print(F("padID:              "));
-    Serial.println(padLogic[PadNr].padID); // Unique identifier for the pad
-    Serial.print(F("use_qwstpad:        "));
-    Serial.print(padLogic[PadNr].use_qwstpad);
-    Serial.print(F(" = "));
-    Serial.println(padLogic[PadNr].use_qwstpad ? "true" : "false");
-    Serial.print(F("address:            0x"));
-    Serial.println(padLogic[PadNr].address,HEX);
-    Serial.print(F("buttons:            "));
-    Serial.println(padLogic[PadNr].buttons,BIN);
-    Serial.print(F("key:                \""));
-    Serial.print(padLogic[PadNr].key.c_str());
-    Serial.println(F("\""));
-    Serial.print(F("btn_idx:            "));
-    Serial.println(padLogic[PadNr].btn_idx);
-    Serial.print(F("buttons_old:        "));
-    Serial.println(padLogic[PadNr].buttons_old);
-    Serial.print(F("logic:              "));
-    Serial.print(padLogic[PadNr].logic);
-    Serial.print(F(" = "));
-    if (padLogic[PadNr].logic == 0)
-      Serial.println(F("ACTIVE_HIGH"));
-    else if (padLogic[PadNr].logic == 1)
-      Serial.println(F("ACTIVE_LOW"));
-    else
-      Serial.println(F("UNKNOWN"));
-    Serial.print(F("buttonPressed:      "));
-    Serial.println(padLogic[PadNr].buttonPressed);
-    Serial.print(F("lastButtonState:    "));
-    Serial.println(padLogic[PadNr].lastButtonState);
-    Serial.print(F("currentButtonState: "));
-    Serial.println(padLogic[PadNr].currentButtonState);
-    Serial.print(F("lastDebounceTime:   "));
-    Serial.println(padLogic[PadNr].lastDebounceTime);
+    pads[PadNr]->pr_PadID();
+    Serial.println(F(", contents pad structure: "));
+    for (uint8_t i = 0; i < 12; i++) {
+      Serial.print(padLabels[i]);
+
+      switch (i) {
+        case 0: // padID
+          Serial.println(padLogic[PadNr].padID);
+          break;
+
+        case 1: // use_qwstpad
+          Serial.print(padLogic[PadNr].use_qwstpad);
+          Serial.print(F(" = "));
+          Serial.println(padLogic[PadNr].use_qwstpad ? "true" : "false");
+          break;
+
+        case 2: // address
+          Serial.println(padLogic[PadNr].address, HEX);
+          break;
+
+        case 3: // logic
+          Serial.print(padLogic[PadNr].logic);
+          Serial.print(F(" = "));
+          switch (padLogic[PadNr].logic) {
+            case 0: Serial.println(F("ACTIVE_HIGH")); break;
+            case 1: Serial.println(F("ACTIVE_LOW")); break;
+            default: Serial.println(F("UNKNOWN")); break;
+          }
+          break;
+
+        case 4: // buttons
+          printBitfield(padLogic[PadNr].buttons);
+          Serial.println();
+
+          break;
+
+        case 5: // buttons_old
+          printBitfield(padLogic[PadNr].buttons_old);
+          Serial.println();
+
+          break;
+
+        case 6: // key
+          Serial.print(padLogic[PadNr].key.c_str());
+          Serial.println(F("\""));
+          break;
+
+        case 7: // btn_idx
+          Serial.println(padLogic[PadNr].btn_idx);
+          break;
+
+        case 8: // buttonPressed
+          Serial.println(padLogic[PadNr].buttonPressed);
+          break;
+
+        case 9: // lastButtonState
+          Serial.println(padLogic[PadNr].lastButtonState);
+          break;
+
+        case 10: // currentButtonState
+          Serial.println(padLogic[PadNr].currentButtonState);
+          break;
+
+        case 11: // lastDebounceTime
+          Serial.println(padLogic[PadNr].lastDebounceTime);
+          break;
+      }
+    }
+    Serial.println(F("------------------------------"));
   }
 }
 
@@ -429,10 +489,6 @@ void printPadDiagnostics(uint8_t PadNr) {
         Serial.println(state ? "HIGH (pressed)" : "LOW (released)");
         if (state)
           btnPressed = true;
-        //while (Serial.available() == 0) {
-          // Wait for user input
-        //}
-        //Serial.read(); // Clear the input
     }
 
     Serial.println("💡 LED States:");
@@ -583,6 +639,7 @@ void setup() {
       if (i == 0) {
         pad1address == pAddress;
         Serial.println(F(". Pad is connected"));
+        padLogic[i].address = pAddress;
         padLogic[i].use_qwstpad = true;
         padLogic[i].logic = pads[i]->getLogicType();
         NUM_PADS++;
@@ -668,6 +725,11 @@ void loop() {
     if (ckForButtonPress()) {
       Serial.print(txt0);
       Serial.println(F("a button has been pressed"));
+#ifndef MY_DEBUG
+      for (uint8_t i = 0; i < NUM_PADS; i++) {
+        show_pad_stru(i);
+      }
+#endif
     }
   }
 }
