@@ -5,7 +5,7 @@ This library enables seamless communication with multiple QwstPad boards over I�
 
 ## 📦 Features
 
-- Supports multiple QwstPad boards via I²C
+- Supports multiple Qw/ST Pad boards via I²C
 - Active-low and active-high logic handling
 - Button state tracking with bitfields (example 1)
 - or Button state tracking with Button Events (example 2)
